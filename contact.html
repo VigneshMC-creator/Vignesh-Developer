@@ -150,10 +150,11 @@
             <div class="form-grid">
               <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Name" required></div>
               <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required></div>
-              <div class="field full"><label for="subject">Subject</label><input id="subject" name="subject" placeholder="What would you like to discuss?" required></div>
+              <div class="field full"><label for="company">Company / Organization <span style="font-weight:400;color:var(--faint)">(optional)</span></label><input id="company" name="company" autocomplete="organization" placeholder="Company or organization"></div>
+              <div class="field full"><label for="subject">Subject</label><input id="subject" name="subject" placeholder="Role, project or enquiry" required></div>
               <div class="field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="A little context about your message..." required></textarea></div>
             </div>
-            <div class="submit-row"><button class="submit" type="submit">Prepare email <span>↗</span></button><span class="form-hint">This opens your email app with the message filled in.<br>No message is stored on this website.</span></div>
+            <div class="submit-row"><button class="submit" type="submit">Create email draft <span>↗</span></button><span class="form-hint">This opens your email app with the message filled in.<br>No message is stored on this website.</span></div>
             <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
           </form>
           <div class="details">
@@ -226,9 +227,10 @@
       if(!form.reportValidity())return;
       const name=document.getElementById('name').value.trim();
       const email=document.getElementById('email').value.trim();
+      const company=document.getElementById('company').value.trim();
       const subject=document.getElementById('subject').value.trim();
       const message=document.getElementById('message').value.trim();
-      const body='Name: '+name+'\nReply email: '+email+'\n\n'+message;
+      const body='Name: '+name+'\nReply email: '+email+'\nCompany / Organization: '+(company || 'Not provided')+'\n\n'+message;
       const href='mailto:Vigneshchowdary195@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
       document.getElementById('formStatus').textContent='Opening your email application…';
       window.location.href=href;
