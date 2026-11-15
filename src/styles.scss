@@ -1,36 +1,93 @@
 :root {
   color-scheme: light;
-  --bg: #f4f6f2; --surface: #fff; --ink: #202a24; --muted: #657169;
-  --faint: #89948d; --soft: #eaf0eb; --line: #dce4dd;
-  --accent: #28654e; --accent-strong: #1f513d; --accent-soft: #dcebe0;
-  --header-bg: rgba(244,246,242,.94); --shadow: 0 12px 36px rgba(31,57,40,.07);
-  --contact-page-bg: #050b1b; --contact-card: #101a2e; --contact-ink: #f5f7fc;
-  --contact-muted: #91a2bc; --contact-faint: #7486a3; --contact-line: #25324a;
-  --contact-input: #030918; --contact-accent: #06b6d4;
+
+  /* One shared cool-neutral and cyan/blue palette for every route. */
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --ink: #172338;
+  --muted: #5e6d82;
+  --faint: #8492a6;
+  --soft: #edf2f8;
+  --line: #dce4ef;
+  --accent: #287fb8;
+  --accent-strong: #1e679f;
+  --accent-soft: #e4f1fa;
+  --header-bg: rgba(245, 247, 251, .94);
+  --shadow: 0 12px 36px rgba(25, 49, 80, .08);
+  --input: #fbfcfe;
+
+  /* Shared navy hero and code-panel tones. */
+  --hero-bg: #071326;
+  --hero-surface: #13233b;
+  --hero-ink: #f4f8ff;
+  --hero-muted: #aebed3;
+  --hero-faint: #8097b5;
+  --hero-copy: #c3d0e2;
+  --hero-accent: #20c5df;
+  --gradient-cyan: #08b7d2;
+  --gradient-blue: #3277e8;
+  --gradient-indigo: #718cf0;
+
+  /* Contact uses the same page and surface tokens as the rest of the site. */
+  --contact-page-bg: var(--bg);
+  --contact-card: var(--surface);
+  --contact-ink: var(--ink);
+  --contact-muted: var(--muted);
+  --contact-faint: var(--faint);
+  --contact-line: var(--line);
+  --contact-input: var(--input);
+  --contact-accent: var(--accent);
+
   --sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
 }
+
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #111713; --surface: #19221c; --ink: #edf3ee; --muted: #a7b2aa;
-  --faint: #7f8e84; --soft: #202c24; --line: #2b3930;
-  --accent: #9acbad; --accent-strong: #b5dfc4; --accent-soft: #233b2c;
-  --header-bg: rgba(17,23,19,.94); --shadow: 0 12px 38px rgba(0,0,0,.2);
+  --bg: #0c1525;
+  --surface: #121f33;
+  --ink: #edf4fd;
+  --muted: #a6b7ce;
+  --faint: #8194af;
+  --soft: #192a42;
+  --line: #293c57;
+  --accent: #55b8dc;
+  --accent-strong: #7acbe8;
+  --accent-soft: #18364e;
+  --header-bg: rgba(12, 21, 37, .94);
+  --shadow: 0 12px 38px rgba(0, 0, 0, .24);
+  --input: #0c192c;
+
+  --hero-bg: #050e1d;
+  --hero-surface: #12243d;
+  --hero-ink: #f4f8ff;
+  --hero-muted: #b2c1d7;
+  --hero-faint: #8499b6;
+  --hero-copy: #c4d1e2;
+  --hero-accent: #28c8e2;
 }
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 body {
-  margin: 0; background: var(--bg); color: var(--ink);
-  font-family: var(--sans); font-size: 14px; line-height: 1.7;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 button, input, textarea { font: inherit; }
 a { color: inherit; text-decoration: none; }
 ::selection { background: var(--accent-soft); color: var(--ink); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
-    animation-duration: .01ms !important; animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important; transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
   }
 }
