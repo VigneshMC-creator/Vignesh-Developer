@@ -1,40 +1,46 @@
-# Vignesh — Full Stack .NET Developer
+# Vignesh Madhav Kumar Edara
 
-A minimal, responsive personal portfolio built with HTML, CSS, and vanilla JavaScript.
+**Full Stack .NET Developer**
+
+A personal portfolio built with HTML, CSS and vanilla JavaScript and published through GitHub Pages.
 
 ## Portfolio
 
-**Website:** [Vignesh's Developer Portfolio](https://vigneshmc-creator.github.io/Vignesh-Developer/)
+**Website:** https://vigneshmc-creator.github.io/Vignesh-Developer/#overview
 
-The portfolio includes a full-resolution profile photo, technology stack, selected projects, a small animated C# editor, and decorative application-node status lights. Visitors can switch between light and dark themes; their preference is remembered in the browser. The separate contact page includes a message form with an optional company field.
+The homepage is served from the repository root. The separate contact page is available at:
+https://vigneshmc-creator.github.io/Vignesh-Developer/contact.html
 
-## Technology interests
+## Technical focus
 
 - **Backend:** C#, .NET, ASP.NET Core, REST APIs, Entity Framework Core
 - **Frontend:** Angular, TypeScript, JavaScript, HTML, CSS
 - **Database:** Microsoft SQL Server
-- **Engineering:** OOP, SOLID principles, design patterns, API design, system design
+- **Engineering:** OOP, SOLID principles, API design, maintainable application changes
 - **Cloud:** Azure fundamentals
 
-## Selected projects
+## Selected work
 
-- [Employee Management](https://github.com/VigneshMC-creator/Employee-Management) — public Angular application repository.
-- **TicketBook API** — private .NET 9 Web API project; source code is not public.
+- **Employee Management** — public Angular learning project: https://github.com/VigneshMC-creator/Employee-Management
+- **TicketBook API** — private .NET Web API project; source code is not public.
+- **Bookkeeping workflows** — professional experience with accounting workflows, API changes, data mapping and integrations; product source code is private.
+
+## Contact
+
+- **GitHub:** https://github.com/VigneshMC-creator
+- **LinkedIn:** https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/
+- **Email:** Vigneshchowdary195@gmail.com
 
 ## Run locally
 
-Open `index.html` in a browser, or use any static file server from the repository root. The contact page is `contact.html`. Its form opens the visitor’s email application with a prefilled draft; it does not send or store messages on a backend.
+Open index.html in a browser, or serve the repository with any static file server. The contact page is contact.html.
+
+The contact form opens the visitor’s email application with a prefilled draft. It does not send or store messages on a backend.
 
 ## Publish with GitHub Pages
 
-In **Settings → Pages**, choose **Deploy from a branch**, select **Master** and **/ (root)**, then save. Commits to `Master` will update the published site.
-
-## Connect
-
-- **GitHub:** [VigneshMC-creator](https://github.com/VigneshMC-creator)
-- **LinkedIn:** [Vignesh Madhav Kumar Edara](https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/)
-- **Email:** [Vigneshchowdary195@gmail.com](mailto:Vigneshchowdary195@gmail.com)
+In **Settings → Pages**, choose **Deploy from a branch**, select **Master** and **/ (root)**. The public homepage URL does not need to include index.html.
 
 ---
 
-*Build thoughtfully. Learn continuously. Improve every day.*
+© Vignesh Madhav Kumar Edara
