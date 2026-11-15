@@ -91,6 +91,7 @@
 
 /* Refined header: balanced brand, centered navigation, theme control. */
 .header-inner {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(170px, 1fr) auto minmax(110px, 1fr);
   align-items: center;
@@ -102,7 +103,7 @@
   align-items: center;
   gap: 10px;
 }
-.brand .brand-name { display: inline-flex; align-items: baseline; }
+.brand .brand-name { display: inline-flex; align-items: baseline; color: var(--ink); }
 .brand .brand-suffix { color: var(--accent); }
 .brand-server-light {
   position: relative;
