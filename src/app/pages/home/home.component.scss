@@ -87,19 +87,21 @@
 }
 .role-prompt { color: var(--hero-faint); }
 .role-title {
-  display: inline-block;
-  min-width: 11ch;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .16s ease, transform .16s ease;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  white-space: pre;
 }
 .role-caret {
-  width: 7px;
-  height: 15px;
   display: inline-block;
+  width: 6px;
+  height: 1em;
+  flex: none;
+  margin-left: 3px;
   border-radius: 1px;
   background: var(--hero-accent);
-  animation: caretBlink 1s steps(2, start) infinite;
+  vertical-align: middle;
+  animation: caretBlink .9s steps(2, start) infinite;
 }
 @keyframes caretBlink { to { opacity: 0; } }
 .hero-intro {
