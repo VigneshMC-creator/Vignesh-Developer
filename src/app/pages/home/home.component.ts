@@ -27,14 +27,43 @@ export class HomeComponent implements OnInit {
   ];
 
   private roleIndex = 0;
-  readonly currentRole = signal(this.roleTitles[0]);
+  private characterIndex = 0;
+  private deleting = false;
+  private pauseTicks = 0;
+
+  readonly currentRole = signal('');
 
   ngOnInit(): void {
-    interval(2600)
+    // Type and erase one character at a time. The caret lives beside the text in the template.
+    interval(85)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
-        this.roleIndex = (this.roleIndex + 1) % this.roleTitles.length;
-        this.currentRole.set(this.roleTitles[this.roleIndex]);
+        const title = this.roleTitles[this.roleIndex];
+
+        if (this.pauseTicks > 0) {
+          this.pauseTicks--;
+          return;
+        }
+
+        if (this.deleting) {
+          this.characterIndex = Math.max(0, this.characterIndex - 1);
+          this.currentRole.set(title.slice(0, this.characterIndex));
+
+          if (this.characterIndex === 0) {
+            this.deleting = false;
+            this.roleIndex = (this.roleIndex + 1) % this.roleTitles.length;
+            this.pauseTicks = 2;
+          }
+          return;
+        }
+
+        this.characterIndex = Math.min(title.length, this.characterIndex + 1);
+        this.currentRole.set(title.slice(0, this.characterIndex));
+
+        if (this.characterIndex === title.length) {
+          this.deleting = true;
+          this.pauseTicks = 16;
+        }
       });
   }
 }
