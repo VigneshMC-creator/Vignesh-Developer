@@ -1,27 +1,53 @@
 <div class="home-page">
   <section class="hero section-anchor" id="overview">
-    <div class="container hero-grid">
+    <div class="container hero-layout">
       <div class="hero-copy">
-        <div class="eyebrow">Full Stack .NET Developer</div>
-        <h1>Building business software with <span>.NET.</span></h1>
-        <p>
-          I work with C#, ASP.NET Core, Angular and SQL Server. In my current role,
-          I contribute to a cloud bookkeeping product—tracing changes through existing
-          workflows, APIs, service logic and SQL data while keeping established business
-          rules intact.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" routerLink="/" fragment="work">View my work <span>↗</span></a>
-          <a class="button button-secondary" routerLink="/contact">Contact me <span>↗</span></a>
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          FULL STACK .NET DEVELOPER
         </div>
-        <div class="hero-tags">
-          <span>C# / ASP.NET Core</span>
-          <span>Angular / TypeScript</span>
-          <span>SQL Server</span>
+
+        <h1>
+          Hi, I'm
+          <span class="hero-name-gradient">Vignesh Madhav<br class="name-line-break"> Kumar Edara</span>
+          <i class="hero-name-led" aria-hidden="true"></i>
+        </h1>
+
+        <div class="hero-role">
+          <span class="role-prompt">&gt;</span>
+          <span>.NET Backend &amp; Full Stack Development</span>
+          <span class="role-separator">·</span>
+          <span>C# · ASP.NET Core · Angular</span>
+          <span class="role-caret" aria-hidden="true"></span>
+        </div>
+
+        <p class="hero-intro">
+          I'm a software developer working on cloud bookkeeping and accounting
+          software. My work spans ASP.NET APIs, service logic, SQL data and Angular
+          interfaces—understanding existing business rules, extending functionality
+          and checking how changes behave across the application. I enjoy solving
+          practical backend problems and building software that is reliable,
+          maintainable and clear to work with.
+        </p>
+
+        <div class="hero-details" aria-label="Contact details">
+          <span class="hero-chip"><span class="chip-icon" aria-hidden="true">⌖</span> India</span>
+          <a class="hero-chip" href="mailto:Vigneshchowdary195@gmail.com">
+            <span class="chip-icon" aria-hidden="true">✉</span> Vigneshchowdary195@gmail.com
+          </a>
+          <a class="hero-chip" href="https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/" target="_blank" rel="noreferrer">
+            <span class="chip-icon linkedin-mark" aria-hidden="true">in</span> LinkedIn
+          </a>
+        </div>
+
+        <div class="hero-actions">
+          <a class="button button-primary" routerLink="/contact"><span aria-hidden="true">✉</span> Contact me</a>
+          <a class="button button-secondary" routerLink="/" fragment="work"><span aria-hidden="true">⌘</span> View projects</a>
+          <a class="button button-tertiary" href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>
       </div>
 
-      <aside class="profile-column">
+      <aside class="profile-column" aria-label="Profile portrait">
         <div class="avatar-frame">
           <img class="avatar" [src]="portraitSrc" alt="Portrait of Vignesh Madhav Kumar Edara"
             width="420" height="410" fetchpriority="high">
