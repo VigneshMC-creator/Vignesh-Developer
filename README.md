@@ -33,7 +33,7 @@ This is a static website. You can open `index.html` directly in a browser, or se
 
 ## Deployment
 
-GitHub Actions deploys the site to GitHub Pages whenever changes are pushed to the `Master` branch.
+To publish the site, open **Settings → Pages** and choose **Deploy from a branch → Master → / (root)**. After saving, GitHub Pages will publish `index.html`; later commits to `Master` will update the site automatically.
 
 ## Connect
 
