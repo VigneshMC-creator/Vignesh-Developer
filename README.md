@@ -19,7 +19,7 @@ A standalone Angular portfolio built with reusable components, Angular Router, R
 - Reactive Forms and HttpClient
 - SCSS design tokens for light and dark themes
 - Angular signals and RxJS
-- Searchable skill matrix and interactive .NET request-flow lab
+- Searchable skill matrix and interactive Swagger-inspired ASP.NET Core API playground
 - GitHub Actions deployment to GitHub Pages
 
 ## Local development
@@ -58,7 +58,7 @@ The service layer keeps HTTP logic out of page components.
 - The home route composes the hero, project showcase, skill matrix and API request-flow lab as standalone Angular components.
 - The role line uses an Angular signal updated by an RxJS interval.
 - The skill matrix filters skills by category and search term.
-- The request-flow lab lets visitors inspect each stage of an illustrative ASP.NET Core API request lifecycle.
+- The API playground provides an interactive Swagger-inspired endpoint explorer for GET, POST, PUT and DELETE employee routes. It uses an in-browser mock service, editable paths and JSON bodies, and displays realistic HTTP status and response payloads without sending network requests.
 - The contact page uses a service layer; its mailto fallback can be replaced by a backend API later.
 
 ## GitHub Pages deployment
