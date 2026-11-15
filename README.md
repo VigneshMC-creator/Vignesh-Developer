@@ -1,45 +1,40 @@
 # Vignesh — Full Stack .NET Developer
 
-<p align="center">
-  <a href="https://vigneshmc-creator.github.io/Vignesh-Developer/">
-    <img src="https://img.shields.io/badge/VIEW_LIVE_PORTFOLIO-66E3DC?style=for-the-badge&logo=githubpages&logoColor=081117" alt="View live portfolio" />
-  </a>
-</p>
+A minimal, responsive personal portfolio built with HTML, CSS, and vanilla JavaScript.
 
-A responsive personal portfolio built with semantic HTML, CSS, and vanilla JavaScript.
+## Portfolio
 
-## About
+**Website:** [Vignesh's Developer Portfolio](https://vigneshmc-creator.github.io/Vignesh-Developer/)
 
-I work across the .NET and Angular ecosystems, with interests in backend engineering, API development, relational data, and application design.
+The portfolio includes a short introduction, profile photo, technology stack, selected projects, and contact links.
 
-## Focus areas
+## Technology interests
 
 - **Backend:** C#, .NET, ASP.NET Core, REST APIs, Entity Framework Core
 - **Frontend:** Angular, TypeScript, JavaScript, HTML, CSS
-- **Data:** Microsoft SQL Server and relational data fundamentals
-- **Engineering:** OOP, SOLID principles, design patterns, API design, and system design
+- **Database:** Microsoft SQL Server
+- **Engineering:** OOP, SOLID principles, design patterns, API design, system design
 - **Cloud:** Azure fundamentals
 
-## Selected work
+## Selected projects
 
-| Project | Details |
-| --- | --- |
-| [Employee Management](https://github.com/VigneshMC-creator/Employee-Management) | Public Angular repository (Angular CLI 20.3.9). |
-| TicketBook API | Private .NET 9 Web API project; source code is not public. |
+- [Employee Management](https://github.com/VigneshMC-creator/Employee-Management) — public Angular application repository.
+- **TicketBook API** — private .NET 9 Web API project; source code is not public.
 
 ## Run locally
 
-This is a static website. You can open `index.html` directly in a browser, or serve the repository with any static file server.
+Open `index.html` in a browser, or use any static file server from the repository root.
 
-## Deployment
+## Publish with GitHub Pages
 
-To publish the site, open **Settings → Pages** and choose **Deploy from a branch → Master → / (root)**. After saving, GitHub Pages will publish `index.html`; later commits to `Master` will update the site automatically.
+In **Settings → Pages**, choose **Deploy from a branch**, select **Master** and **/ (root)**, then save. Commits to `Master` will update the published site.
 
 ## Connect
 
-- [GitHub profile](https://github.com/VigneshMC-creator)
-- [LinkedIn profile](https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/)
+- **GitHub:** [VigneshMC-creator](https://github.com/VigneshMC-creator)
+- **LinkedIn:** [Vignesh Madhav Kumar Edara](https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/)
+- **Email:** [Vigneshchowdary195@gmail.com](mailto:Vigneshchowdary195@gmail.com)
 
 ---
 
-<p align="center"><em>Build thoughtfully. Learn continuously. Improve every day.</em></p>
+*Build thoughtfully. Learn continuously. Improve every day.*
