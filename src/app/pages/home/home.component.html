@@ -15,7 +15,7 @@
 
         <div class="hero-role" aria-label="Technical focus">
           <span class="role-prompt">&gt;</span>
-          <span class="role-title" [class.is-changing]="!roleVisible" aria-live="polite">{{ roleTitles[roleIndex] }}</span>
+          <span class="role-title" aria-live="polite">{{ currentRole() }}</span>
           <span class="role-caret" aria-hidden="true"></span>
         </div>
 
