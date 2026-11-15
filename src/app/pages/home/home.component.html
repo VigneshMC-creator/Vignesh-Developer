@@ -8,8 +8,7 @@
         </div>
 
         <h1>
-          Hi, I'm
-          <span class="hero-name-gradient">Vignesh Madhav<br class="name-line-break"> Kumar Edara</span>
+          Hi, I'm <span class="hero-name-gradient">Vignesh Madhav<br class="name-line-break"> Kumar Edara</span>
           <i class="hero-name-led" aria-hidden="true"></i>
         </h1>
 
@@ -20,12 +19,10 @@
         </div>
 
         <p class="hero-intro">
-          I'm a software developer focused on building and improving full-stack
-          applications. I work across ASP.NET Core APIs, service layers, Entity
-          Framework Core, SQL Server and Angular—tracing requests from HTTP endpoints
-          through application logic and data access, validating inputs, managing
-          persistence and testing end-to-end behavior. I enjoy solving practical
-          engineering problems and writing software that is reliable and maintainable.
+          I build and improve full-stack applications with a backend focus. My work spans
+          ASP.NET Core APIs, service layers, Entity Framework Core, SQL Server and Angular —
+          tracing requests from HTTP endpoints through application logic and data access,
+          validating inputs, managing persistence and testing end-to-end behavior.
         </p>
 
         <div class="hero-details" aria-label="Contact details">
@@ -46,29 +43,49 @@
       </div>
 
       <aside class="profile-column" aria-label="Profile portrait">
-        <div class="avatar-frame">
-          <img class="avatar" [src]="portraitSrc" alt="Portrait of Vignesh Madhav Kumar Edara"
-            width="420" height="410" fetchpriority="high">
-        </div>
-        <div class="profile-caption">
-          <strong>Vignesh Madhav Kumar Edara</strong>
-          <span>Software Developer · .NET</span>
-        </div>
-        <div class="profile-links">
-          <a href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <div class="profile-card">
+          <div class="profile-card-top">
+            <span class="profile-card-label">DEVELOPER PROFILE</span>
+            <span class="profile-card-status"><i></i> AVAILABLE</span>
+          </div>
+          <div class="avatar-frame">
+            <img class="avatar" [src]="portraitSrc" alt="Portrait of Vignesh Madhav Kumar Edara"
+              width="420" height="410" fetchpriority="high">
+          </div>
+          <div class="profile-caption">
+            <strong>Vignesh Madhav Kumar Edara</strong>
+            <span>Software Developer · .NET</span>
+          </div>
+          <div class="profile-stack" aria-label="Primary technologies">
+            <span>C#</span><span>.NET</span><span>Angular</span><span>SQL Server</span>
+          </div>
+          <div class="profile-links">
+            <a href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          </div>
         </div>
       </aside>
     </div>
   </section>
 
-  <section class="technology-bar" aria-label="Technologies">
-    <div class="container technology-inner">
-      <span class="bar-label">Technologies I use</span>
-      <div class="technology-list">
-        <span>C#</span><span>ASP.NET Core</span><span>Entity Framework Core</span>
-        <span>Angular</span><span>SQL Server</span><span>Azure</span>
-      </div>
+  <section class="focus-strip" aria-label="Development areas">
+    <div class="container focus-strip-grid">
+      <article class="focus-card">
+        <span class="focus-index">01</span>
+        <div><h2>Backend &amp; APIs</h2><p>C#, ASP.NET Core, REST endpoints and service design.</p></div>
+      </article>
+      <article class="focus-card">
+        <span class="focus-index">02</span>
+        <div><h2>Data &amp; Persistence</h2><p>EF Core, SQL Server, DTO mapping and reliable data access.</p></div>
+      </article>
+      <article class="focus-card">
+        <span class="focus-index">03</span>
+        <div><h2>Frontend Integration</h2><p>Angular, TypeScript, forms and API-connected interfaces.</p></div>
+      </article>
+      <article class="focus-card">
+        <span class="focus-index">04</span>
+        <div><h2>Cloud &amp; Services</h2><p>Azure storage, external APIs and integration workflows.</p></div>
+      </article>
     </div>
   </section>
 
@@ -98,63 +115,68 @@
             review, test and make sure I can explain the code I work on.
           </p>
         </div>
-        <div class="focus-list">
-          <div class="focus-item"><strong>Trace the request</strong><span>Controller → service → repository → database</span></div>
-          <div class="focus-item"><strong>Preserve existing behavior</strong><span>Maintain API contracts and established application behavior</span></div>
-          <div class="focus-item"><strong>Check the data</strong><span>Verify what is written, updated and returned</span></div>
-          <div class="focus-item"><strong>Test the workflow</strong><span>Check the outcome, not only a successful build</span></div>
+        <div class="approach-card">
+          <div class="approach-card-heading"><span>ENGINEERING PRINCIPLES</span><span>HOW I WORK</span></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Understand first</strong><p>Trace the existing flow and identify its dependencies.</p></div></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Keep layers focused</strong><p>Separate controllers, application logic and data access.</p></div></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Protect existing behavior</strong><p>Respect API contracts, validation and compatibility.</p></div></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Verify end to end</strong><p>Test responses, persisted data and the user workflow.</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="content-section section-anchor" id="experience">
+  <section class="content-section experience-section section-anchor" id="experience">
     <div class="container">
       <div class="section-heading">
-        <div><div class="section-label">ENGINEERING WORKFLOW</div><h2>From request to database.</h2></div>
-        <p>A simplified view of the layers I work across when changing a .NET application.</p>
+        <div><div class="section-label">PROFESSIONAL EXPERIENCE</div><h2>Engineering across the stack.</h2></div>
+        <p>Practical development work across API, application and data layers.</p>
       </div>
 
-      <div class="workbench">
-        <div class="code-card">
-          <div class="code-header"><span>EXAMPLE / C# SERVICE</span><span class="code-file">EmployeeService.cs</span></div>
-          <div class="code-sample" aria-label="C sharp service code example">
-            <div><span class="line-number">01</span><span class="keyword">public async Task</span> SaveAsync(</div>
-            <div><span class="line-number">02</span>  <span class="type-name">Employee</span> employee,</div>
-            <div><span class="line-number">03</span>  <span class="type-name">CancellationToken</span> ct)</div>
-            <div><span class="line-number">04</span>{{ '{' }}</div>
-            <div><span class="line-number">05</span>  db.Employees.Add(employee);</div>
-            <div><span class="line-number">06</span>  <span class="keyword">await</span> db.SaveChangesAsync(ct);</div>
-            <div><span class="line-number">07</span>{{ '}' }}</div>
+      <article class="experience-card">
+        <div class="experience-marker"><span></span></div>
+        <div class="experience-main">
+          <div class="experience-topline">
+            <div>
+              <span class="experience-kicker">SOFTWARE DEVELOPMENT</span>
+              <h3>Full Stack .NET Developer</h3>
+            </div>
+            <span class="experience-badge">.NET · ANGULAR</span>
+          </div>
+          <p>
+            Working across existing application workflows and new feature development —
+            following controller-to-service execution, reviewing data transformations,
+            extending endpoints and verifying application behavior across frontend and backend.
+          </p>
+          <div class="experience-tags">
+            <span>C#</span><span>ASP.NET Core</span><span>Angular</span><span>EF Core</span><span>SQL Server</span><span>Azure</span>
           </div>
         </div>
-
-        <div class="application-nodes">
-          <div class="nodes-header"><span>APPLICATION LAYERS</span><span>STACK OVERVIEW</span></div>
-          <div class="node-row"><span class="node-label">API</span><span class="node-value"><i class="led led-green"></i> ASP.NET Core</span></div>
-          <div class="node-row"><span class="node-label">LOGIC</span><span class="node-value"><i class="led led-teal"></i> Services</span></div>
-          <div class="node-row"><span class="node-label">DATA</span><span class="node-value"><i class="led led-amber"></i> SQL Server</span></div>
-          <div class="nodes-foot"><span>DECORATIVE STATUS LIGHTS</span><span>LOCAL / DEV</span></div>
+        <div class="experience-side">
+          <span>ENGINEERING FOCUS</span>
+          <strong>Build · Integrate · Validate</strong>
+          <p>Maintainable changes, clear contracts and reliable data flow.</p>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
   <section class="content-section section-anchor" id="work">
     <div class="container">
       <div class="section-heading">
-        <div><div class="section-label">SELECTED WORK</div><h2>Projects and experience.</h2></div>
-        <p>Public learning work and professional application experience. Private source code is not linked.</p>
+        <div><div class="section-label">SELECTED WORK</div><h2>Projects and engineering practice.</h2></div>
+        <p>A mix of public learning work, personal development and professional engineering experience.</p>
       </div>
 
       <div class="project-grid">
         <article class="project-card">
           <div class="project-meta"><span>PUBLIC PROJECT</span><span>ANGULAR</span></div>
-          <h3>Employee Management</h3>
+          <div class="project-card-heading"><span class="project-symbol">EM</span><h3>Employee Management</h3></div>
           <p>
-            An Angular application I use to practise feature structure, components,
-            routing and service-based organization in an employee-management workflow.
+            An Angular application for practising feature structure, component composition,
+            routing and service-based organization around an employee workflow.
           </p>
+          <div class="project-flow"><span>Components</span><i>→</i><span>Services</span><i>→</i><span>API</span></div>
           <div class="tags"><span>Angular</span><span>TypeScript</span><span>Routing</span></div>
           <a class="project-link" href="https://github.com/VigneshMC-creator/Employee-Management"
             target="_blank" rel="noreferrer">View GitHub repository ↗</a>
@@ -162,24 +184,24 @@
 
         <article class="project-card">
           <div class="project-meta"><span>PERSONAL PROJECT</span><span>PRIVATE SOURCE</span></div>
-          <h3>TicketBook API</h3>
+          <div class="project-card-heading"><span class="project-symbol">API</span><h3>TicketBook API</h3></div>
           <p>
             A .NET Web API project for exploring endpoint design, service organization,
-            Entity Framework Core, SQL Server and authentication flows. The repository
-            is currently private.
+            Entity Framework Core, SQL Server and authentication flows.
           </p>
+          <div class="project-flow"><span>Controller</span><i>→</i><span>Service</span><i>→</i><span>EF Core</span></div>
           <div class="tags"><span>.NET</span><span>EF Core</span><span>SQL Server</span><span>JWT</span></div>
-          <span class="project-note">Private repository · Not publicly available</span>
+          <span class="project-note">Private repository · Source code not public</span>
         </article>
 
         <article class="project-card">
           <div class="project-meta"><span>PROFESSIONAL EXPERIENCE</span><span>APPLICATION DEVELOPMENT</span></div>
-          <h3>API and data-layer development</h3>
+          <div class="project-card-heading"><span class="project-symbol">DB</span><h3>API and data-layer development</h3></div>
           <p>
             Working across ASP.NET Core controller-to-service flows, DTO mapping,
             repository operations and SQL persistence. Technical tasks include adding
-            endpoints, tracing data transformations, maintaining existing API behavior,
-            integrating external service responses and checking success and error paths.
+            endpoints, tracing data transformations, maintaining API behavior and
+            checking external integration success and error paths.
           </p>
           <div class="tags"><span>ASP.NET Core</span><span>DTO mapping</span><span>EF Core</span><span>SQL Server</span></div>
           <span class="project-note">Professional engineering work · Source code private</span>
@@ -187,12 +209,13 @@
 
         <article class="project-card">
           <div class="project-meta"><span>THIS WEBSITE</span><span>ANGULAR</span></div>
-          <h3>Developer Portfolio</h3>
+          <div class="project-card-heading"><span class="project-symbol">UI</span><h3>Developer Portfolio</h3></div>
           <p>
-            This portfolio is built as a standalone Angular application with reusable
-            components, routing, theme state and a contact service ready for a future API.
+            A standalone Angular application with reusable components, routing,
+            reactive UI state, theme switching and an injectable contact service
+            ready for a future API.
           </p>
-          <div class="tags"><span>Angular</span><span>TypeScript</span><span>SCSS</span></div>
+          <div class="tags"><span>Angular</span><span>TypeScript</span><span>SCSS</span><span>RxJS</span></div>
           <a class="project-link" href="https://github.com/VigneshMC-creator/portfolio"
             target="_blank" rel="noreferrer">View source repository ↗</a>
         </article>
@@ -200,23 +223,8 @@
     </div>
   </section>
 
-  <section class="content-section section-anchor" id="stack">
-    <div class="container">
-      <div class="section-heading">
-        <div><div class="section-label">TECHNICAL STACK</div><h2>Tools I work with.</h2></div>
-        <p>My current toolkit, with a backend focus and hands-on frontend work.</p>
-      </div>
-
-      <div class="stack-grid">
-        <div class="stack-item"><h3>Backend</h3><p>C# · .NET · ASP.NET Core<br>REST APIs · LINQ · Dependency Injection</p></div>
-        <div class="stack-item"><h3>Data</h3><p>Entity Framework Core<br>SQL Server · Relational data · Stored procedures</p></div>
-        <div class="stack-item"><h3>Frontend</h3><p>Angular · TypeScript<br>JavaScript · HTML · SCSS</p></div>
-        <div class="stack-item"><h3>Engineering</h3><p>OOP · SOLID principles<br>Maintainability · API design · System design</p></div>
-        <div class="stack-item"><h3>Tools</h3><p>Visual Studio · VS Code<br>Git · GitHub · GitHub Copilot</p></div>
-        <div class="stack-item"><h3>Cloud</h3><p>Microsoft Azure fundamentals<br>Azure Blob Storage concepts</p></div>
-      </div>
-    </div>
-  </section>
+  <app-skills-matrix></app-skills-matrix>
+  <app-request-flow-lab></app-request-flow-lab>
 
   <section class="contact-callout">
     <div class="container callout-inner">

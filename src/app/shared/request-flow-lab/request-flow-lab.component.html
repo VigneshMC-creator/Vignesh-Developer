@@ -1,0 +1,50 @@
+<section class="flow-lab content-section section-anchor" id="sandbox">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="section-label">INTERACTIVE REQUEST FLOW</div>
+        <h2>Follow a .NET API request.</h2>
+      </div>
+      <p>Select each layer to explore how a typical request moves through an ASP.NET Core application.</p>
+    </div>
+
+    <div class="flow-workbench">
+      <div class="flow-sidebar">
+        <div class="flow-sidebar-heading"><span>REQUEST LIFECYCLE</span><span>6 LAYERS</span></div>
+        <div class="flow-step-list" role="group" aria-label="Select a request lifecycle stage">
+          @for (stage of stages; track stage.name; let i = $index) {
+            <button type="button" class="flow-step" [class.active]="activeIndex() === i"
+              [attr.aria-pressed]="activeIndex() === i" (click)="selectStage(i)">
+              <span class="flow-step-number">{{ (i + 1).toString().padStart(2, '0') }}</span>
+              <span class="flow-step-name">{{ stage.name }}</span>
+              <span class="flow-step-arrow">↗</span>
+            </button>
+          }
+        </div>
+        <div class="flow-sidebar-foot"><span class="flow-live-dot"></span> ILLUSTRATIVE APPLICATION FLOW</div>
+      </div>
+
+      <div class="flow-detail" aria-live="polite">
+        <div class="flow-detail-top">
+          <span class="flow-detail-layer">{{ activeStage().layer }}</span>
+          <span class="flow-detail-count">STEP {{ activeIndex() + 1 }} / {{ stages.length }}</span>
+        </div>
+        <h3>{{ activeStage().title }}</h3>
+        <p>{{ activeStage().detail }}</p>
+
+        <div class="flow-code-card">
+          <div class="flow-code-header">
+            <span>EXAMPLE / C# &amp; HTTP</span>
+            <span>ILLUSTRATIVE SNIPPET</span>
+          </div>
+          <pre><code>{{ activeStage().code }}</code></pre>
+        </div>
+
+        <div class="flow-responsibility">
+          <span class="flow-responsibility-mark">✓</span>
+          <p><strong>Key responsibility</strong>{{ activeStage().responsibility }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

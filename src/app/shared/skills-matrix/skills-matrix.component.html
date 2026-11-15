@@ -1,0 +1,50 @@
+<section class="skills-section content-section section-anchor" id="skills">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="section-label">TECHNICAL STACK</div>
+        <h2>Tools I work with.</h2>
+      </div>
+      <p>Browse the technologies and engineering practices I use, alongside areas I’m currently exploring.</p>
+    </div>
+
+    <div class="skills-toolbar">
+      <div class="skill-filters" role="group" aria-label="Filter skills by category">
+        @for (category of categories; track category) {
+          <button type="button" class="skill-filter" [class.active]="activeCategory() === category"
+            [attr.aria-pressed]="activeCategory() === category" (click)="selectCategory(category)">
+            {{ category }}
+          </button>
+        }
+      </div>
+      <label class="skill-search">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/>
+          <path d="m16 16 4.4 4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        <input type="search" [value]="searchTerm()" (input)="onSearchInput($event)"
+          placeholder="Search technologies..." aria-label="Search technologies">
+      </label>
+    </div>
+
+    <div class="skill-grid" aria-live="polite">
+      @for (skill of filteredSkills(); track skill.name) {
+        <article class="skill-card">
+          <div class="skill-card-top">
+            <span class="skill-dot" [class.exploring]="skill.exploring"></span>
+            <span class="skill-category">{{ skill.category }}</span>
+          </div>
+          <h3>{{ skill.name }}</h3>
+          <p>{{ skill.note }}</p>
+          @if (skill.exploring) {
+            <span class="skill-state">Currently exploring</span>
+          }
+        </article>
+      }
+    </div>
+
+    @if (filteredSkills().length === 0) {
+      <p class="skills-empty">No matching technologies. Try another search or category.</p>
+    }
+  </div>
+</section>

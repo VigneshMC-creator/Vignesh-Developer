@@ -2,7 +2,7 @@
 
 **Full Stack .NET Developer**
 
-The portfolio is a standalone Angular application. It uses Angular standalone components, Angular Router, Reactive Forms, SCSS and injectable services so API integrations can be added without rewriting the UI.
+A standalone Angular portfolio built with reusable components, Angular Router, Reactive Forms, SCSS, Angular signals and injectable services.
 
 ## Portfolio
 
@@ -17,8 +17,9 @@ The portfolio is a standalone Angular application. It uses Angular standalone co
 - Angular 22.2.6 and TypeScript 6
 - Standalone components and Angular Router
 - Reactive Forms and HttpClient
-- SCSS and CSS custom properties
-- Angular signals for light/dark theme
+- SCSS design tokens for light and dark themes
+- Angular signals and RxJS
+- Searchable skill matrix and interactive .NET request-flow lab
 - GitHub Actions deployment to GitHub Pages
 
 ## Local development
@@ -52,9 +53,17 @@ To connect a backend later:
 
 The service layer keeps HTTP logic out of page components.
 
+## Architecture and interactions
+
+- The home route composes the hero, project showcase, skill matrix and API request-flow lab as standalone Angular components.
+- The role line uses an Angular signal updated by an RxJS interval.
+- The skill matrix filters skills by category and search term.
+- The request-flow lab lets visitors inspect each stage of an illustrative ASP.NET Core API request lifecycle.
+- The contact page uses a service layer; its mailto fallback can be replaced by a backend API later.
+
 ## GitHub Pages deployment
 
-The workflow at `.github/workflows/deploy-pages.yml` builds Angular and publishes the browser output. In repository **Settings → Pages → Build and deployment → Source**, select **GitHub Actions** once. After that, pushes to the `Master` branch trigger deployment.
+The workflow at `.github/workflows/deploy-pages.yml` builds Angular and publishes the browser output. In repository **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**. Pushes to the `Master` branch trigger deployment.
 
 The site uses the repository subpath `/portfolio/`. A 404 fallback is included for direct navigation to the `/contact` route.
 
