@@ -6,7 +6,7 @@ A minimal, responsive personal portfolio built with HTML, CSS, and vanilla JavaS
 
 **Website:** [Vignesh's Developer Portfolio](https://vigneshmc-creator.github.io/Vignesh-Developer/)
 
-The portfolio includes a short introduction, profile photo, technology stack, selected projects, and contact links. Visitors can switch between light and dark themes; their preference is remembered in the browser.
+The portfolio includes a full-resolution profile photo, technology stack, selected projects, a small animated C# editor, and decorative application-node status lights. Visitors can switch between light and dark themes; their preference is remembered in the browser. The separate contact page includes a message form with an optional company field.
 
 ## Technology interests
 
@@ -23,7 +23,7 @@ The portfolio includes a short introduction, profile photo, technology stack, se
 
 ## Run locally
 
-Open `index.html` in a browser, or use any static file server from the repository root.
+Open `index.html` in a browser, or use any static file server from the repository root. The contact page is `contact.html`. Its form opens the visitor’s email application with a prefilled draft; it does not send or store messages on a backend.
 
 ## Publish with GitHub Pages
 
