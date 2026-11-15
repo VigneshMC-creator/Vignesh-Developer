@@ -5,17 +5,24 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" routerLink="/" fragment="overview" aria-label="Vignesh Developer home">
-      VIGNESH<span>.DEV</span>
+      <span class="brand-name">VIGNESH<span class="brand-suffix">.DEV</span></span>
+      <i class="brand-server-light" aria-hidden="true" title="Developer status indicator"></i>
     </a>
 
-    <nav class="main-nav" aria-label="Main navigation">
-      <a routerLink="/" fragment="overview">Overview</a>
-      <a routerLink="/" fragment="about">About</a>
-      <a routerLink="/" fragment="experience">Experience</a>
-      <a routerLink="/" fragment="work">Projects</a>
-      <a routerLink="/" fragment="stack">Stack</a>
-      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    <nav class="main-nav" id="primaryNav" [class.open]="mobileMenuOpen" aria-label="Main navigation">
+      <a routerLink="/" fragment="overview" (click)="closeMobileMenu()">Overview</a>
+      <a routerLink="/" fragment="about" (click)="closeMobileMenu()">About</a>
+      <a routerLink="/" fragment="experience" (click)="closeMobileMenu()">Experience</a>
+      <a routerLink="/" fragment="work" (click)="closeMobileMenu()">Projects</a>
+      <a routerLink="/" fragment="stack" (click)="closeMobileMenu()">Stack</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
     </nav>
+
+    <button class="nav-menu" type="button" (click)="toggleNavigation()"
+      [attr.aria-expanded]="mobileMenuOpen" aria-controls="primaryNav"
+      [attr.aria-label]="mobileMenuOpen ? 'Close navigation' : 'Open navigation'">
+      {{ mobileMenuOpen ? '×' : '☰' }}
+    </button>
 
     <button class="theme-toggle" type="button" (click)="toggleTheme()"
       [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'">
