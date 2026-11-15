@@ -52,7 +52,7 @@
   max-width: 720px;
   margin: 0 0 14px;
   color: var(--hero-ink);
-  font-size: clamp(39px, 4.35vw, 54px);
+  font-size: clamp(38px, 4.1vw, 50px);
   font-weight: 800;
   line-height: 1.07;
   letter-spacing: -.065em;
@@ -168,7 +168,7 @@ a.hero-chip:hover { border-color: var(--hero-accent); color: var(--hero-ink); ba
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 20px 17px;
+  padding: 17px 20px 17px;
   border: 1px solid var(--hero-avatar-border);
   border-radius: 18px;
   background: var(--surface);
@@ -333,7 +333,7 @@ a.hero-chip:hover { border-color: var(--hero-accent); color: var(--hero-ink); ba
 @media (max-width: 900px) {
   .container { width: min(100% - 40px, 780px); }
   .hero-layout { grid-template-columns: minmax(0, 1fr) 245px; gap: 24px; }
-  .hero h1 { font-size: clamp(37px, 5vw, 50px); }
+  .hero h1 { font-size: clamp(36px, 4.7vw, 47px); }
   .profile-card { padding: 17px 15px 15px; }
   .avatar-frame { width: 170px; height: 170px; }
   .focus-strip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -348,14 +348,13 @@ a.hero-chip:hover { border-color: var(--hero-accent); color: var(--hero-ink); ba
   .hero-copy { grid-row: 1; }
   .profile-column { grid-row: 2; justify-content: flex-start; }
   .profile-card { width: 100%; max-width: 420px; display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: 15px; align-items: center; padding: 13px; }
-  .profile-card-top { grid-column: 1 / -1; margin-bottom: 11px; }
-  .avatar-frame { grid-row: 2 / span 3; width: 96px; height: 96px; padding: 4px; }
+  .avatar-frame { grid-row: 1 / span 3; width: 96px; height: 96px; padding: 4px; }
   .profile-caption { margin: 0; text-align: left; }
   .profile-caption strong { font-size: 11px; }
   .profile-caption span { text-align: left; }
   .profile-stack { grid-column: 2; justify-content: flex-start; margin-top: 8px; }
   .profile-links { grid-column: 2; gap: 13px; margin-top: 8px; }
-  .hero h1 { font-size: clamp(36px, 8.8vw, 48px); }
+  .hero h1 { font-size: clamp(35px, 8.2vw, 45px); }
   .hero-intro { font-size: 12px; line-height: 1.85; }
   .hero-role { font-size: 11px; gap: 6px; }
   .hero-chip { font-size: 8px; }
@@ -372,7 +371,7 @@ a.hero-chip:hover { border-color: var(--hero-accent); color: var(--hero-ink); ba
   .callout-inner { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 420px) {
-  .hero h1 { font-size: 34px; }
+  .hero h1 { font-size: 32px; }
   .name-line-break { display: none; }
   .hero-details { flex-direction: column; align-items: flex-start; }
   .hero-chip { max-width: 100%; overflow-wrap: anywhere; }
