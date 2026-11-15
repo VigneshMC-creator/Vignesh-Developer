@@ -1,50 +1,156 @@
-<section class="flow-lab content-section section-anchor" id="sandbox">
+<section class="api-playground content-section section-anchor" id="sandbox">
   <div class="container">
     <div class="section-heading">
       <div>
-        <div class="section-label">INTERACTIVE REQUEST FLOW</div>
-        <h2>Follow a .NET API request.</h2>
+        <div class="section-label">INTERACTIVE API PLAYGROUND</div>
+        <h2>Explore and test a .NET REST API.</h2>
       </div>
-      <p>Select each layer to explore how a typical request moves through an ASP.NET Core application.</p>
+      <p>
+        A Swagger-inspired API explorer. Select an endpoint, edit its request and inspect
+        the response — just like testing an ASP.NET Core API during development.
+      </p>
     </div>
 
-    <div class="flow-workbench">
-      <div class="flow-sidebar">
-        <div class="flow-sidebar-heading"><span>REQUEST LIFECYCLE</span><span>6 LAYERS</span></div>
-        <div class="flow-step-list" role="group" aria-label="Select a request lifecycle stage">
-          @for (stage of stages; track stage.name; let i = $index) {
-            <button type="button" class="flow-step" [class.active]="activeIndex() === i"
-              [attr.aria-pressed]="activeIndex() === i" (click)="selectStage(i)">
-              <span class="flow-step-number">{{ (i + 1).toString().padStart(2, '0') }}</span>
-              <span class="flow-step-name">{{ stage.name }}</span>
-              <span class="flow-step-arrow">↗</span>
-            </button>
-          }
+    <div class="api-workbench">
+      <div class="api-workbench-topbar">
+        <div class="api-brand">
+          <span class="api-brand-icon" aria-hidden="true">⌘</span>
+          <span>EMPLOYEE API</span>
+          <span class="api-version">v1</span>
         </div>
-        <div class="flow-sidebar-foot"><span class="flow-live-dot"></span> ILLUSTRATIVE APPLICATION FLOW</div>
+        <div class="api-mode"><span class="api-mode-dot"></span> MOCK SERVER · OFFLINE DEMO</div>
       </div>
 
-      <div class="flow-detail" aria-live="polite">
-        <div class="flow-detail-top">
-          <span class="flow-detail-layer">{{ activeStage().layer }}</span>
-          <span class="flow-detail-count">STEP {{ activeIndex() + 1 }} / {{ stages.length }}</span>
-        </div>
-        <h3>{{ activeStage().title }}</h3>
-        <p>{{ activeStage().detail }}</p>
-
-        <div class="flow-code-card">
-          <div class="flow-code-header">
-            <span>EXAMPLE / C# &amp; HTTP</span>
-            <span>ILLUSTRATIVE SNIPPET</span>
+      <div class="api-workbench-grid">
+        <aside class="endpoint-sidebar">
+          <div class="endpoint-sidebar-heading">
+            <span>ENDPOINTS</span>
+            <span>{{ endpoints.length }} ROUTES</span>
           </div>
-          <pre><code>{{ activeStage().code }}</code></pre>
-        </div>
 
-        <div class="flow-responsibility">
-          <span class="flow-responsibility-mark">✓</span>
-          <p><strong>Key responsibility</strong>{{ activeStage().responsibility }}</p>
+          <div class="endpoint-list" role="group" aria-label="Available API endpoints">
+            @for (endpoint of endpoints; track endpoint.id) {
+              <button type="button" class="endpoint-item"
+                [class.active]="activeEndpointId() === endpoint.id"
+                [attr.aria-pressed]="activeEndpointId() === endpoint.id"
+                (click)="selectEndpoint(endpoint)">
+                <span class="method-badge"
+                  [class.method-get]="endpoint.method === 'GET'"
+                  [class.method-post]="endpoint.method === 'POST'"
+                  [class.method-put]="endpoint.method === 'PUT'"
+                  [class.method-delete]="endpoint.method === 'DELETE'">
+                  {{ endpoint.method }}
+                </span>
+                <span class="endpoint-item-copy">
+                  <span class="endpoint-path">{{ endpoint.path }}</span>
+                  <span class="endpoint-summary">{{ endpoint.summary }}</span>
+                </span>
+              </button>
+            }
+          </div>
+
+          <div class="endpoint-sidebar-note">
+            <span class="api-mode-dot"></span>
+            Local in-memory data only
+          </div>
+        </aside>
+
+        <div class="api-console">
+          <div class="api-console-section">
+            <div class="api-console-heading">
+              <div>
+                <span class="console-overline">REQUEST BUILDER</span>
+                <h3>{{ activeEndpoint().summary }}</h3>
+              </div>
+              <button type="button" class="reset-button" (click)="resetDemo()">Reset demo</button>
+            </div>
+
+            <p class="endpoint-description">{{ activeEndpoint().description }}</p>
+
+            <div class="route-editor">
+              <span class="method-badge route-method"
+                [class.method-get]="activeEndpoint().method === 'GET'"
+                [class.method-post]="activeEndpoint().method === 'POST'"
+                [class.method-put]="activeEndpoint().method === 'PUT'"
+                [class.method-delete]="activeEndpoint().method === 'DELETE'">
+                {{ activeEndpoint().method }}
+              </span>
+              <input type="text" class="route-input" [value]="requestPath()"
+                (input)="onPathInput($event)" aria-label="API request path"
+                spellcheck="false" autocomplete="off">
+            </div>
+
+            @if (isBodyRequired()) {
+              <div class="request-body-editor">
+                <div class="editor-label-row">
+                  <label for="apiRequestBody">REQUEST BODY</label>
+                  <span>application/json</span>
+                </div>
+                <textarea id="apiRequestBody" class="request-body-input"
+                  [value]="requestBody()" (input)="onBodyInput($event)"
+                  spellcheck="false" autocapitalize="off" autocomplete="off"
+                  aria-label="JSON request body"></textarea>
+              </div>
+            } @else {
+              <div class="request-hint">
+                <span aria-hidden="true">ⓘ</span>
+                This endpoint does not require a request body.
+              </div>
+            }
+
+            <div class="request-action-row">
+              <span class="request-content-type">CONTENT-TYPE: application/json</span>
+              <button type="button" class="send-request-button" (click)="sendRequest()">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m5 12 14-7-5.2 14-2.4-5.4L5 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                  <path d="m11.4 13.6 3.8-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+                Send request
+              </button>
+            </div>
+          </div>
+
+          <div class="api-response-section" aria-live="polite">
+            <div class="api-response-heading">
+              <div>
+                <span class="console-overline">SERVER RESPONSE</span>
+                <h3>Response body</h3>
+              </div>
+              @if (response(); as result) {
+                <span class="response-status"
+                  [class.status-success]="result.status >= 200 && result.status < 300"
+                  [class.status-client-error]="result.status >= 400 && result.status < 500">
+                  {{ result.status }} {{ result.statusText }}
+                </span>
+              } @else {
+                <span class="response-idle">WAITING FOR REQUEST</span>
+              }
+            </div>
+
+            @if (response(); as result) {
+              @if (result.body !== null) {
+                <pre class="response-json"><code>{{ formattedResponse() }}</code></pre>
+              } @else {
+                <div class="no-content-response">
+                  <span class="no-content-icon">✓</span>
+                  <div><strong>204 No Content</strong><p>The resource was deleted successfully. The API returned no response body.</p></div>
+                </div>
+              }
+            } @else {
+              <div class="response-placeholder">
+                <span class="response-placeholder-icon">{ }</span>
+                <strong>Your response will appear here.</strong>
+                <p>Choose an endpoint and send a request to inspect its status code and JSON response.</p>
+              </div>
+            }
+          </div>
         </div>
       </div>
+    </div>
+
+    <div class="api-playground-footnote">
+      <span class="api-mode-dot"></span>
+      <p><strong>Safe demo environment.</strong> Requests run against temporary in-browser mock data. No live server is called and no information is sent or stored.</p>
     </div>
   </div>
 </section>
