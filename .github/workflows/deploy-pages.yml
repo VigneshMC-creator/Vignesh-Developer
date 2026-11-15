@@ -1,0 +1,41 @@
+name: Build and deploy Angular portfolio
+on:
+  push:
+    branches: [Master]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.15.0
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build Angular for GitHub Pages
+        run: npm run build:github-pages
+      - name: Add GitHub Pages route fallback
+        run: cp src/404.html dist/vignesh-portfolio/browser/404.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/vignesh-portfolio/browser
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
