@@ -26,7 +26,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   private roleTimeout: number | null = null;
 
   ngOnInit(): void {
-    if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Reduced-motion preferences disable visual transitions in CSS, not the content rotator.
+    if (typeof window === 'undefined') {
       return;
     }
 
