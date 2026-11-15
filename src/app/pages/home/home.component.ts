@@ -15,7 +15,7 @@ import { RequestFlowLabComponent } from '../../shared/request-flow-lab/request-f
 export class HomeComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
-  readonly portraitSrc = 'assets/vignesh-portrait.webp';
+  readonly portraitSrc = 'assets/vignesh-profile-yellow.webp';
   readonly roleTitles = [
     '.NET Core',
     'Azure',
