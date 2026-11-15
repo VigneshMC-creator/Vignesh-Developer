@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +10,11 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
+  private readonly destroyRef = inject(DestroyRef);
+
   readonly portraitSrc = 'assets/vignesh-portrait.webp';
+
   readonly roleTitles = [
     '.NET Core',
     'Azure',
@@ -20,33 +25,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     'MCP Servers'
   ];
 
-  roleIndex = 0;
-  roleVisible = true;
-  private roleInterval: number | null = null;
-  private roleTimeout: number | null = null;
+  private roleIndex = 0;
+  readonly currentRole = signal(this.roleTitles[0]);
 
   ngOnInit(): void {
-    // Reduced-motion preferences disable visual transitions in CSS, not the content rotator.
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    this.roleInterval = window.setInterval(() => {
-      this.roleVisible = false;
-
-      this.roleTimeout = window.setTimeout(() => {
+    // Signals notify Angular directly whenever the displayed role changes.
+    // takeUntilDestroyed automatically stops the interval when this page is left.
+    interval(2600)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
         this.roleIndex = (this.roleIndex + 1) % this.roleTitles.length;
-        this.roleVisible = true;
-      }, 180);
-    }, 2800);
-  }
-
-  ngOnDestroy(): void {
-    if (this.roleInterval !== null) {
-      window.clearInterval(this.roleInterval);
-    }
-    if (this.roleTimeout !== null) {
-      window.clearTimeout(this.roleTimeout);
-    }
+        this.currentRole.set(this.roleTitles[this.roleIndex]);
+      });
   }
 }
