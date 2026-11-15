@@ -6,8 +6,8 @@ The portfolio is a standalone Angular application. It uses Angular standalone co
 
 ## Portfolio
 
-- **Website:** https://vigneshmc-creator.github.io/Vignesh-Developer/#overview
-- **Contact:** https://vigneshmc-creator.github.io/Vignesh-Developer/contact
+- **Website:** https://vigneshmc-creator.github.io/portfolio/#overview
+- **Contact:** https://vigneshmc-creator.github.io/portfolio/contact
 - **GitHub:** https://github.com/VigneshMC-creator
 - **LinkedIn:** https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/
 - **Email:** Vigneshchowdary195@gmail.com
@@ -56,7 +56,7 @@ The service layer keeps HTTP logic out of page components.
 
 The workflow at `.github/workflows/deploy-pages.yml` builds Angular and publishes the browser output. In repository **Settings → Pages → Build and deployment → Source**, select **GitHub Actions** once. After that, pushes to the `Master` branch trigger deployment.
 
-The site uses the repository subpath `/Vignesh-Developer/`. A 404 fallback is included for direct navigation to the `/contact` route.
+The site uses the repository subpath `/portfolio/`. A 404 fallback is included for direct navigation to the `/contact` route.
 
 ## Selected work
 
