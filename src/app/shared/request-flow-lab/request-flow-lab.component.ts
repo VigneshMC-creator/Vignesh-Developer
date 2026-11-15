@@ -1,13 +1,7 @@
-import { Component, computed, signal } from '@angular/core';
-
-interface RequestStage {
-  name: string;
-  layer: string;
-  title: string;
-  detail: string;
-  responsibility: string;
-  code: string;
-}
+import { Component, computed, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { MockEmployeeApiService } from './mock-employee-api.service';
+import type { ApiEndpoint, ApiMethod, ApiResponse } from './mock-employee-api.models';
 
 @Component({
   selector: 'app-request-flow-lab',
@@ -16,63 +10,100 @@ interface RequestStage {
   styleUrl: './request-flow-lab.component.scss'
 })
 export class RequestFlowLabComponent {
-  readonly stages: RequestStage[] = [
+  private readonly mockApi = inject(MockEmployeeApiService);
+
+  readonly endpoints: ApiEndpoint[] = [
     {
-      name: 'HTTP Request',
-      layer: 'CLIENT → API',
-      title: 'Start with a clear contract.',
-      detail: 'A client sends an HTTP request with a route, method, headers and payload. The API contract defines what the endpoint accepts and what it returns.',
-      responsibility: 'Keep the request shape explicit and predictable.',
-      code: 'POST /api/employees\nContent-Type: application/json\n\n{\n  "name": "Alex Morgan",\n  "department": "Engineering"\n}'
+      id: 'list',
+      method: 'GET',
+      path: '/api/employees',
+      summary: 'Get all employees',
+      description: 'Returns the current employee collection with a 200 OK response.',
+      sampleBody: ''
     },
     {
-      name: 'Controller',
-      layer: 'PRESENTATION LAYER',
-      title: 'Translate HTTP into an application action.',
-      detail: 'The controller binds the incoming request, applies endpoint-level behavior and delegates the use case to an application service. It should not become the home for database or business logic.',
-      responsibility: 'Handle HTTP concerns and return the appropriate result.',
-      code: '[HttpPost]\npublic async Task<IActionResult> Create(\n    CreateEmployeeRequest request,\n    CancellationToken ct)\n{\n    var result = await employeeService.CreateAsync(request, ct);\n    return CreatedAtAction(nameof(GetById),\n        new { id = result.Id }, result);\n}'
+      id: 'get-one',
+      method: 'GET',
+      path: '/api/employees/1',
+      summary: 'Get employee by ID',
+      description: 'Looks up one employee by route identifier. Change the ID in the route field to try another record.',
+      sampleBody: ''
     },
     {
-      name: 'Validation & Mapping',
-      layer: 'BOUNDARY CHECKS',
-      title: 'Validate before changing data.',
-      detail: 'Validate required fields and business constraints, then map the request DTO into the application model. Keep input contracts separate from persistence entities.',
-      responsibility: 'Reject invalid input early and keep model boundaries clear.',
-      code: 'if (string.IsNullOrWhiteSpace(request.Name))\n{\n    return Result.Invalid("Name is required.");\n}\n\nvar employee = mapper.Map<Employee>(request);'
+      id: 'create',
+      method: 'POST',
+      path: '/api/employees',
+      summary: 'Create an employee',
+      description: 'Validates the JSON payload, creates an employee and returns 201 Created.',
+      sampleBody: '{\n  "name": "Sam Taylor",\n  "email": "sam.taylor@example.com",\n  "department": "Platform"\n}'
     },
     {
-      name: 'Service Layer',
-      layer: 'APPLICATION LOGIC',
-      title: 'Keep the use case in one place.',
-      detail: 'The service coordinates the operation, applies application rules and calls the required abstractions. It keeps the controller small and makes the use case easier to test.',
-      responsibility: 'Coordinate the workflow without coupling it to HTTP.',
-      code: 'public async Task<EmployeeDto> CreateAsync(\n    CreateEmployeeRequest request, CancellationToken ct)\n{\n    var employee = mapper.Map<Employee>(request);\n    await employeeRepository.AddAsync(employee, ct);\n    return mapper.Map<EmployeeDto>(employee);\n}'
+      id: 'update',
+      method: 'PUT',
+      path: '/api/employees/2',
+      summary: 'Update an employee',
+      description: 'Updates the selected employee. The request body can contain one or more editable fields.',
+      sampleBody: '{\n  "name": "Jordan Lee",\n  "email": "jordan.lee@example.com",\n  "department": "Cloud Engineering"\n}'
     },
     {
-      name: 'Data Access',
-      layer: 'PERSISTENCE',
-      title: 'Persist through the data layer.',
-      detail: 'The repository or DbContext performs the database operation. EF Core tracks entity changes and SaveChangesAsync commits them to the database.',
-      responsibility: 'Keep persistence concerns inside the data-access boundary.',
-      code: 'dbContext.Employees.Add(employee);\nawait dbContext.SaveChangesAsync(ct);'
-    },
-    {
-      name: 'HTTP Response',
-      layer: 'API RESPONSE',
-      title: 'Return a useful, consistent result.',
-      detail: 'Map the outcome to an appropriate HTTP status and response DTO. Error paths should be consistent too, so clients can handle validation, authorization and server failures predictably.',
-      responsibility: 'Make success and failure responses easy to consume.',
-      code: 'return CreatedAtAction(\n    nameof(GetById),\n    new { id = employee.Id },\n    responseDto);\n\n// Example: 201 Created'
+      id: 'delete',
+      method: 'DELETE',
+      path: '/api/employees/2',
+      summary: 'Delete an employee',
+      description: 'Removes the employee selected in the route and returns 204 No Content.',
+      sampleBody: ''
     }
   ];
 
-  readonly activeIndex = signal(0);
-  readonly activeStage = computed(() => this.stages[this.activeIndex()]);
+  readonly activeEndpointId = signal('list');
+  readonly activeEndpoint = computed(
+    () => this.endpoints.find(endpoint => endpoint.id === this.activeEndpointId()) ?? this.endpoints[0]
+  );
+  readonly requestPath = signal('/api/employees');
+  readonly requestBody = signal('');
+  readonly response = signal<ApiResponse | null>(null);
+  readonly isBodyRequired = computed(
+    () => this.activeEndpoint().method === 'POST' || this.activeEndpoint().method === 'PUT'
+  );
+  readonly formattedResponse = computed(() => {
+    const body = this.response()?.body;
+    return body === null || body === undefined ? '' : JSON.stringify(body, null, 2);
+  });
 
-  selectStage(index: number): void {
-    if (index >= 0 && index < this.stages.length) {
-      this.activeIndex.set(index);
+  selectEndpoint(endpoint: ApiEndpoint): void {
+    this.activeEndpointId.set(endpoint.id);
+    this.requestPath.set(endpoint.path);
+    this.requestBody.set(endpoint.sampleBody);
+    this.response.set(null);
+  }
+
+  onPathInput(event: Event): void {
+    const target = event.target;
+    if (target instanceof HTMLInputElement) {
+      this.requestPath.set(target.value);
+      this.response.set(null);
     }
+  }
+
+  onBodyInput(event: Event): void {
+    const target = event.target;
+    if (target instanceof HTMLTextAreaElement) {
+      this.requestBody.set(target.value);
+      this.response.set(null);
+    }
+  }
+
+  sendRequest(): void {
+    this.response.set(
+      this.mockApi.execute(this.activeEndpoint().method, this.requestPath(), this.requestBody())
+    );
+  }
+
+  resetDemo(): void {
+    this.mockApi.reset();
+    this.activeEndpointId.set('list');
+    this.requestPath.set('/api/employees');
+    this.requestBody.set('');
+    this.response.set(null);
   }
 }
