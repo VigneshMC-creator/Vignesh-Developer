@@ -44,10 +44,6 @@
 
       <aside class="profile-column" aria-label="Profile portrait">
         <div class="profile-card">
-          <div class="profile-card-top">
-            <span class="profile-card-label">DEVELOPER PROFILE</span>
-            <span class="profile-card-status">C# · .NET</span>
-          </div>
           <div class="avatar-frame">
             <img class="avatar" [src]="portraitSrc" alt="Portrait of Vignesh Madhav Kumar Edara"
               width="420" height="410" fetchpriority="high">
@@ -98,29 +94,46 @@
       <div class="about-grid">
         <div class="about-copy">
           <p>
-            My development approach starts with understanding the <strong>complete request
-            lifecycle</strong>. I trace HTTP requests through controllers, validation,
-            service methods and repository or data-access logic before changing code.
+            I believe good software should do more than pass a test or deliver a feature.
+            It should be <strong>easy to understand, safe to run, efficient under load and
+            straightforward to change</strong> as requirements evolve. Before writing code,
+            I try to understand the problem, the existing architecture and the impact a
+            change could have on other parts of the application.
           </p>
           <p>
-            When extending an application, I review the existing implementation,
-            follow DTOs and mapping profiles, inspect EF Core and SQL interactions,
-            and verify how data moves through each layer. I pay close attention to
-            <strong>API contracts, backward compatibility, validation and predictable persistence</strong>.
+            I aim for <strong>simple, purposeful code</strong>: remove unnecessary duplication,
+            reuse well-defined components and services, and avoid abstractions that make
+            a solution harder to follow. Fewer lines are useful only when the result stays
+            readable, testable and clear to the next developer.
           </p>
           <p>
-            My technical interests include .NET architecture, EF Core change tracking,
-            SQL performance, asynchronous programming, API integrations and Angular
-            connectivity. I use AI-assisted tools as part of development, but I still
-            review, test and make sure I can explain the code I work on.
+            Performance starts with choosing the right place to do the work. I look for
+            repeated processing, avoid unnecessary database calls, pay attention to EF Core
+            queries and SQL execution, and use asynchronous I/O for operations that wait
+            on external resources. I prefer measuring a bottleneck before optimizing it.
+          </p>
+          <p>
+            Security belongs in the design, not as a final patch. That means validating
+            untrusted input, enforcing authorization at the right boundaries, following
+            least-privilege access, protecting configuration and secrets, and returning
+            useful errors without exposing internal details.
+          </p>
+          <p>
+            For dependable APIs and server-side applications, I value clear contracts,
+            backward compatibility, environment-based configuration, structured logging,
+            predictable error handling, cancellation support and tests for important
+            success and failure paths. The goal is software that is maintainable,
+            deployable and reliable—not code that only works on one developer's machine.
           </p>
         </div>
         <div class="approach-card">
-          <div class="approach-card-heading"><span>ENGINEERING PRINCIPLES</span><span>HOW I WORK</span></div>
-          <div class="approach-item"><span class="approach-dot"></span><div><strong>Understand first</strong><p>Trace the existing flow and identify its dependencies.</p></div></div>
-          <div class="approach-item"><span class="approach-dot"></span><div><strong>Keep layers focused</strong><p>Separate controllers, application logic and data access.</p></div></div>
-          <div class="approach-item"><span class="approach-dot"></span><div><strong>Protect existing behavior</strong><p>Respect API contracts, validation and compatibility.</p></div></div>
-          <div class="approach-item"><span class="approach-dot"></span><div><strong>Verify end to end</strong><p>Test responses, persisted data and the user workflow.</p></div></div>
+          <div class="approach-card-heading"><span>ENGINEERING PRINCIPLES</span><span>QUALITY CHECKLIST</span></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Clean, purposeful code</strong><p>Keep solutions readable, focused and free from avoidable duplication.</p></div></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Secure by design</strong><p>Validate input, enforce access rules and handle sensitive data carefully.</p></div></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Performance with evidence</strong><p>Reduce unnecessary work and database round trips; optimize measured bottlenecks.</p></div></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Maintainable architecture</strong><p>Use clear boundaries, reusable services and meaningful abstractions.</p></div></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Reliable server behaviour</strong><p>Respect configuration, API contracts, cancellation and predictable errors.</p></div></div>
+          <div class="approach-item"><span class="approach-dot"></span><div><strong>Test what matters</strong><p>Verify business rules, persistence and important failure scenarios.</p></div></div>
         </div>
       </div>
     </div>
