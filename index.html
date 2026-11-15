@@ -117,6 +117,60 @@
     .codebox .property { color: #7cc7f8; }
     .card-footer { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 17px; }
     .mini-tag { border: 1px solid rgba(102,227,220,.18); border-radius: 7px; color: #9fded9; background: rgba(102,227,220,.06); padding: 5px 8px; font: 9px var(--mono); }
+    /* Animated code editor */
+    .codebox { position: relative; }
+    .codebox::after {
+      content: ""; position: absolute; left: 0; right: 0; top: -20%; height: 1px; pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(102,227,220,.8), transparent);
+      box-shadow: 0 0 12px rgba(102,227,220,.5); animation: codeScan 6s ease-in-out infinite;
+    }
+    .code-line { opacity: 0; transform: translateY(6px); animation: codeReveal .5s ease forwards; animation-delay: var(--delay, 0s); }
+    .code-cursor { display: inline-block; width: 7px; height: 13px; margin-left: 4px; vertical-align: -2px; border-radius: 1px; background: var(--cyan); box-shadow: 0 0 10px rgba(102,227,220,.55); animation: cursorBlink 1s steps(2, start) infinite; }
+    @keyframes codeReveal { to { opacity: 1; transform: translateY(0); } }
+    @keyframes cursorBlink { 50% { opacity: 0; } }
+    @keyframes codeScan { 0%, 100% { transform: translateY(0); opacity: 0; } 15%, 75% { opacity: .9; } 85% { transform: translateY(260px); opacity: 0; } }
+
+    /* Decorative server rack with activity LEDs */
+    .server-rack {
+      position: absolute; z-index: 5; right: -37px; bottom: 1px; width: 186px; padding: 11px;
+      border: 1px solid rgba(102,227,220,.25); border-radius: 15px;
+      background: linear-gradient(145deg, rgba(20,32,48,.98), rgba(7,13,23,.98));
+      box-shadow: 0 18px 48px rgba(0,0,0,.48), 0 0 28px rgba(102,227,220,.07);
+      transform: rotate(-4deg); animation: rackFloat 5s ease-in-out infinite;
+    }
+    .server-rack::before {
+      content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+      background: linear-gradient(135deg, rgba(102,227,220,.48), transparent 45%, rgba(108,145,255,.35));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+    }
+    .rack-head { display: flex; align-items: center; justify-content: space-between; gap: 5px; margin-bottom: 9px; color: #8da2ba; font: 8px var(--mono); letter-spacing: .07em; }
+    .rack-status { display: inline-flex; align-items: center; gap: 4px; color: #90e5bd; font-size: 7px; }
+    .rack-status i { width: 5px; height: 5px; border-radius: 50%; background: #72f0aa; box-shadow: 0 0 8px #72f0aa; animation: ledPulse 1.5s ease-in-out infinite; }
+    .rack-unit {
+      display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 6px; padding: 8px;
+      border: 1px solid rgba(148,163,184,.13); border-radius: 8px; background: linear-gradient(90deg, rgba(148,163,184,.075), rgba(2,8,16,.6));
+      box-shadow: inset 0 1px rgba(255,255,255,.025);
+    }
+    .rack-unit-info b { display: block; color: #dce8f5; font: 8px var(--mono); letter-spacing: .05em; }
+    .rack-unit-info small { display: block; margin-top: 3px; color: #71869f; font: 7px var(--mono); }
+    .rack-lights { display: flex; gap: 4px; align-items: center; padding: 0 2px; }
+    .led { display: block; width: 5px; height: 5px; border-radius: 50%; animation: ledPulse 1.8s ease-in-out infinite; }
+    .led.green { background: #76f0a5; box-shadow: 0 0 7px rgba(118,240,165,.9); }
+    .led.cyan { background: #6cebe4; box-shadow: 0 0 7px rgba(108,235,228,.9); animation-delay: .45s; }
+    .led.amber { background: #ffc66d; box-shadow: 0 0 7px rgba(255,198,109,.8); animation-delay: .9s; }
+    .rack-footer { display: flex; align-items: center; gap: 7px; padding: 9px 3px 1px; color: #70859e; font: 7px var(--mono); letter-spacing: .07em; }
+    .rack-power { display: flex; gap: 3px; flex: 1; }
+    .rack-power i { height: 3px; flex: 1; border-radius: 5px; background: rgba(102,227,220,.18); animation: powerFlow 1.8s ease-in-out infinite; }
+    .rack-power i:nth-child(2) { animation-delay: .15s; }
+    .rack-power i:nth-child(3) { animation-delay: .3s; }
+    .rack-power i:nth-child(4) { animation-delay: .45s; }
+    .rack-power i:nth-child(5) { animation-delay: .6s; }
+    .rack-power i:nth-child(6) { animation-delay: .75s; }
+    .rack-ready { color: #8fe5bb; }
+    @keyframes ledPulse { 0%, 100% { opacity: .38; filter: brightness(.75); } 50% { opacity: 1; filter: brightness(1.5); } }
+    @keyframes powerFlow { 0%, 100% { background: rgba(102,227,220,.14); } 50% { background: rgba(102,227,220,.95); box-shadow: 0 0 7px rgba(102,227,220,.65); } }
+    @keyframes rackFloat { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-7px) rotate(-2deg); } }
     .float-chip { position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid rgba(148,163,184,.18); border-radius: 12px; background: rgba(15,23,38,.92); color: #d6e1ef; font: 10px var(--mono); box-shadow: 0 12px 35px rgba(0,0,0,.3); }
     .float-chip.left { left: -8px; bottom: 74px; }
     .float-chip.right { right: -10px; top: 67px; }
@@ -203,6 +257,7 @@
       .orbit { width: 330px; height: 330px; }
       .float-chip.left { left: 0; bottom: 42px; }
       .float-chip.right { right: -2px; top: 42px; }
+      .server-rack { right: -2px; bottom: -6px; width: 172px; }
       .strip-inner { display: block; }
       .stack-marquee { justify-content: flex-start; margin-top: 13px; }
       section { padding: 72px 0; }
@@ -222,8 +277,10 @@
       .float-chip { font-size: 9px; padding: 8px 9px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
+      .code-line { opacity: 1; transform: none; }
+      .server-rack { transform: rotate(-4deg); }
     }
   </style>
 </head>
@@ -284,17 +341,38 @@
                 <div class="avatar-wrap"><img src="https://avatars.githubusercontent.com/u/217372994?v=4" alt="Vignesh's GitHub profile avatar" /></div>
                 <div><h2>Vignesh</h2><p>Full Stack .NET Developer</p></div>
               </div>
-              <div class="codebox" aria-label="Developer profile code illustration">
-                <div><span class="comment">// A little about how I work</span></div>
-                <div><span class="key">const</span> developer = {</div>
-                <div>&nbsp;&nbsp;<span class="property">backend</span>: <span class="value">"C# / ASP.NET Core"</span>,</div>
-                <div>&nbsp;&nbsp;<span class="property">frontend</span>: <span class="value">"Angular"</span>,</div>
-                <div>&nbsp;&nbsp;<span class="property">database</span>: <span class="value">"SQL Server"</span>,</div>
-                <div>&nbsp;&nbsp;<span class="property">mindset</span>: <span class="value">"Understand first"</span></div>
-                <div>};</div>
-                <div style="margin-top:8px"><span class="key">while</span> (learning) { <span class="value">build();</span> }</div>
+              <div class="codebox" aria-label="Animated developer profile code illustration">
+                <div class="code-line" style="--delay: .15s"><span class="comment">// A little about how I work</span></div>
+                <div class="code-line" style="--delay: .45s"><span class="key">const</span> developer = {</div>
+                <div class="code-line" style="--delay: .75s">&nbsp;&nbsp;<span class="property">backend</span>: <span class="value">"C# / ASP.NET Core"</span>,</div>
+                <div class="code-line" style="--delay: 1.05s">&nbsp;&nbsp;<span class="property">frontend</span>: <span class="value">"Angular"</span>,</div>
+                <div class="code-line" style="--delay: 1.35s">&nbsp;&nbsp;<span class="property">database</span>: <span class="value">"SQL Server"</span>,</div>
+                <div class="code-line" style="--delay: 1.65s">&nbsp;&nbsp;<span class="property">mindset</span>: <span class="value">"Understand first"</span></div>
+                <div class="code-line" style="--delay: 1.95s">};</div>
+                <div class="code-line" style="--delay: 2.25s; margin-top:8px"><span class="key">while</span> (learning) { <span class="value">build();</span> }<span class="code-cursor" aria-hidden="true"></span></div>
               </div>
               <div class="card-footer"><span class="mini-tag">.NET</span><span class="mini-tag">ANGULAR</span><span class="mini-tag">SQL</span><span class="mini-tag">APIs</span></div>
+            </div>
+          </div>
+          <div class="server-rack" aria-hidden="true">
+            <div class="rack-head">
+              <span>SERVER STACK</span>
+              <span class="rack-status"><i></i> LIVE VISUAL</span>
+            </div>
+            <div class="rack-unit">
+              <div class="rack-unit-info"><b>API NODE</b><small>ASP.NET CORE</small></div>
+              <div class="rack-lights"><i class="led green"></i><i class="led cyan"></i><i class="led amber"></i></div>
+            </div>
+            <div class="rack-unit">
+              <div class="rack-unit-info"><b>DATA STORE</b><small>SQL SERVER</small></div>
+              <div class="rack-lights"><i class="led green"></i><i class="led cyan"></i><i class="led green"></i></div>
+            </div>
+            <div class="rack-unit">
+              <div class="rack-unit-info"><b>APP SERVICE</b><small>ANGULAR UI</small></div>
+              <div class="rack-lights"><i class="led green"></i><i class="led amber"></i><i class="led cyan"></i></div>
+            </div>
+            <div class="rack-footer">
+              <span>POWER</span><span class="rack-power"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="rack-ready">READY</span>
             </div>
           </div>
         </div>
