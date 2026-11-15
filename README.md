@@ -2,7 +2,7 @@
 
 **Full Stack .NET Developer**
 
-The portfolio is being maintained as a standalone Angular application. It uses Angular standalone components, Angular Router, Reactive Forms, SCSS and injectable services so API integrations can be added without rewriting the UI.
+The portfolio is a standalone Angular application. It uses Angular standalone components, Angular Router, Reactive Forms, SCSS and injectable services so API integrations can be added without rewriting the UI.
 
 ## Portfolio
 
@@ -62,7 +62,7 @@ The site uses the repository subpath `/Vignesh-Developer/`. A 404 fallback is in
 
 - **Employee Management** — public Angular learning project: https://github.com/VigneshMC-creator/Employee-Management
 - **TicketBook API** — private .NET Web API project; source code is not public.
-- **Bookkeeping workflows** — professional experience with accounting workflows, API changes, data mapping and integrations; product source code is private.
+- **API and data-layer development** — professional experience across ASP.NET Core endpoints, controller-to-service flows, DTO mapping, repository operations, SQL persistence and external API integrations; source code is private.
 
 ---
 
