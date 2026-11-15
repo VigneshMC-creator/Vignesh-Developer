@@ -1,0 +1,206 @@
+<div class="home-page">
+  <section class="hero section-anchor" id="overview">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Full Stack .NET Developer</div>
+        <h1>Building business software with <span>.NET.</span></h1>
+        <p>
+          I work with C#, ASP.NET Core, Angular and SQL Server. In my current role,
+          I contribute to a cloud bookkeeping product—tracing changes through existing
+          workflows, APIs, service logic and SQL data while keeping established business
+          rules intact.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" routerLink="/" fragment="work">View my work <span>↗</span></a>
+          <a class="button button-secondary" routerLink="/contact">Contact me <span>↗</span></a>
+        </div>
+        <div class="hero-tags">
+          <span>C# / ASP.NET Core</span>
+          <span>Angular / TypeScript</span>
+          <span>SQL Server</span>
+        </div>
+      </div>
+
+      <aside class="profile-column">
+        <div class="avatar-frame">
+          <img class="avatar" [src]="portraitSrc" alt="Portrait of Vignesh Madhav Kumar Edara"
+            width="420" height="410" fetchpriority="high">
+        </div>
+        <div class="profile-caption">
+          <strong>Vignesh Madhav Kumar Edara</strong>
+          <span>Software Developer · .NET</span>
+        </div>
+        <div class="profile-links">
+          <a href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="technology-bar" aria-label="Technologies">
+    <div class="container technology-inner">
+      <span class="bar-label">Technologies I use</span>
+      <div class="technology-list">
+        <span>C#</span><span>ASP.NET Core</span><span>Entity Framework Core</span>
+        <span>Angular</span><span>SQL Server</span><span>Azure</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section section-anchor" id="about">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="section-label">01 / ABOUT</div><h2>How I approach development.</h2></div>
+        <p>I like to understand the complete request path before changing a single method.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>
+            My day-to-day work is in <strong>accounting and bookkeeping software</strong>.
+            A change to a transaction workflow can involve the UI, an API endpoint,
+            service logic, data mapping and SQL. I trace those pieces first, especially
+            when existing users depend on behavior that has accumulated over time.
+          </p>
+          <p>
+            Recent work has involved bringing established functionality into a newer
+            application version, reviewing the previous implementation, updating API
+            flows and checking how data is saved and returned. It has made me pay close
+            attention to <strong>backward compatibility, validation and predictable data handling</strong>.
+          </p>
+          <p>
+            I’m strengthening my skills in .NET architecture, EF Core, SQL performance
+            and Angular integration. I use AI-assisted tools as part of development,
+            but I still review, test and make sure I can explain the code I work on.
+          </p>
+        </div>
+        <div class="focus-list">
+          <div class="focus-item"><strong>Trace the request</strong><span>Controller → service → repository → database</span></div>
+          <div class="focus-item"><strong>Preserve business rules</strong><span>Understand the existing workflow before changing it</span></div>
+          <div class="focus-item"><strong>Check the data</strong><span>Verify what is written, updated and returned</span></div>
+          <div class="focus-item"><strong>Test the workflow</strong><span>Check the outcome, not only a successful build</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section section-anchor" id="experience">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="section-label">02 / ENGINEERING WORKFLOW</div><h2>From request to database.</h2></div>
+        <p>A simplified view of the layers I work across when changing a .NET application.</p>
+      </div>
+
+      <div class="workbench">
+        <div class="code-card">
+          <div class="code-header"><span>EXAMPLE / C# SERVICE</span><span class="code-file">EmployeeService.cs</span></div>
+          <div class="code-sample" aria-label="C sharp service code example">
+            <div><span class="line-number">01</span><span class="keyword">public async Task</span> SaveAsync(</div>
+            <div><span class="line-number">02</span>  <span class="type-name">Employee</span> employee,</div>
+            <div><span class="line-number">03</span>  <span class="type-name">CancellationToken</span> ct)</div>
+            <div><span class="line-number">04</span>{</div>
+            <div><span class="line-number">05</span>  db.Employees.Add(employee);</div>
+            <div><span class="line-number">06</span>  <span class="keyword">await</span> db.SaveChangesAsync(ct);</div>
+            <div><span class="line-number">07</span>}</div>
+          </div>
+        </div>
+
+        <div class="application-nodes">
+          <div class="nodes-header"><span>APPLICATION LAYERS</span><span>STACK OVERVIEW</span></div>
+          <div class="node-row"><span class="node-label">01 / API</span><span class="node-value"><i class="led led-green"></i> ASP.NET Core</span></div>
+          <div class="node-row"><span class="node-label">02 / LOGIC</span><span class="node-value"><i class="led led-teal"></i> Services</span></div>
+          <div class="node-row"><span class="node-label">03 / DATA</span><span class="node-value"><i class="led led-amber"></i> SQL Server</span></div>
+          <div class="nodes-foot"><span>DECORATIVE STATUS LIGHTS</span><span>LOCAL / DEV</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section section-anchor" id="work">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="section-label">03 / SELECTED WORK</div><h2>Projects and experience.</h2></div>
+        <p>Public learning work and professional application experience. Private source code is not linked.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-meta"><span>01 / PUBLIC PROJECT</span><span>ANGULAR</span></div>
+          <h3>Employee Management</h3>
+          <p>
+            An Angular application I use to practise feature structure, components,
+            routing and service-based organization in an employee-management workflow.
+          </p>
+          <div class="tags"><span>Angular</span><span>TypeScript</span><span>Routing</span></div>
+          <a class="project-link" href="https://github.com/VigneshMC-creator/Employee-Management"
+            target="_blank" rel="noreferrer">View GitHub repository ↗</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta"><span>02 / PERSONAL PROJECT</span><span>PRIVATE SOURCE</span></div>
+          <h3>TicketBook API</h3>
+          <p>
+            A .NET Web API project for exploring endpoint design, service organization,
+            Entity Framework Core, SQL Server and authentication flows. The repository
+            is currently private.
+          </p>
+          <div class="tags"><span>.NET</span><span>EF Core</span><span>SQL Server</span><span>JWT</span></div>
+          <span class="project-note">Private repository · Not publicly available</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta"><span>03 / PROFESSIONAL EXPERIENCE</span><span>BUSINESS SOFTWARE</span></div>
+          <h3>Bookkeeping workflows</h3>
+          <p>
+            Contributing to established accounting workflows across API endpoints,
+            data mapping, transaction behavior and integration logic while moving
+            functionality into a newer application version.
+          </p>
+          <div class="tags"><span>ASP.NET</span><span>SQL Server</span><span>API integration</span></div>
+          <span class="project-note">Professional work · Source code private</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta"><span>04 / THIS WEBSITE</span><span>ANGULAR</span></div>
+          <h3>Developer Portfolio</h3>
+          <p>
+            This portfolio is built as a standalone Angular application with reusable
+            components, routing, theme state and a contact service ready for a future API.
+          </p>
+          <div class="tags"><span>Angular</span><span>TypeScript</span><span>SCSS</span></div>
+          <a class="project-link" href="https://github.com/VigneshMC-creator/Vignesh-Developer"
+            target="_blank" rel="noreferrer">View source repository ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section section-anchor" id="stack">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="section-label">04 / TECHNICAL STACK</div><h2>Tools I work with.</h2></div>
+        <p>My current toolkit, with a backend focus and hands-on frontend work.</p>
+      </div>
+
+      <div class="stack-grid">
+        <div class="stack-item"><h3>Backend</h3><p>C# · .NET · ASP.NET Core<br>REST APIs · LINQ · Dependency Injection</p></div>
+        <div class="stack-item"><h3>Data</h3><p>Entity Framework Core<br>SQL Server · Relational data · Stored procedures</p></div>
+        <div class="stack-item"><h3>Frontend</h3><p>Angular · TypeScript<br>JavaScript · HTML · SCSS</p></div>
+        <div class="stack-item"><h3>Engineering</h3><p>OOP · SOLID principles<br>Maintainability · API design · System design</p></div>
+        <div class="stack-item"><h3>Tools</h3><p>Visual Studio · VS Code<br>Git · GitHub · GitHub Copilot</p></div>
+        <div class="stack-item"><h3>Cloud</h3><p>Microsoft Azure fundamentals<br>Azure Blob Storage concepts</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-callout">
+    <div class="container callout-inner">
+      <div>
+        <div class="section-label">05 / CONTACT</div>
+        <h2>Have a .NET role or project to discuss?</h2>
+        <p>Reach me by email, LinkedIn or GitHub.</p>
+      </div>
+      <a class="button button-primary" routerLink="/contact">Get in touch <span>↗</span></a>
+    </div>
+  </section>
+</div>

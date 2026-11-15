@@ -1,0 +1,41 @@
+<div #devCursor class="dev-cursor" aria-hidden="true">
+  <span class="cursor-core"></span>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" routerLink="/" fragment="overview" aria-label="Vignesh Developer home">
+      VIGNESH<span>.DEV</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a routerLink="/" fragment="overview">Overview</a>
+      <a routerLink="/" fragment="about">About</a>
+      <a routerLink="/" fragment="experience">Experience</a>
+      <a routerLink="/" fragment="work">Projects</a>
+      <a routerLink="/" fragment="stack">Stack</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    </nav>
+
+    <button class="theme-toggle" type="button" (click)="toggleTheme()"
+      [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'">
+      <span aria-hidden="true">{{ themeService.theme() === 'dark' ? '☀' : '☾' }}</span>
+      {{ themeService.theme() === 'dark' ? 'Light' : 'Dark' }}
+    </button>
+  </div>
+</header>
+
+<main>
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© {{ currentYear }} Vignesh Madhav Kumar Edara</span>
+    <div class="footer-links">
+      <a href="mailto:Vigneshchowdary195@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+      <a href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </div>
+  </div>
+</footer>
