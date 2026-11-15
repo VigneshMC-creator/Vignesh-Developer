@@ -38,6 +38,7 @@ To publish the site, open **Settings → Pages** and choose **Deploy from a bran
 ## Connect
 
 - [GitHub profile](https://github.com/VigneshMC-creator)
+- [LinkedIn profile](https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/)
 
 ---
 
