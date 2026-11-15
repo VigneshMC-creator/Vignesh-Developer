@@ -64,19 +64,38 @@
     .visual{position:relative;max-width:455px;margin-left:auto;width:100%;padding:0 0 32px 25px}
     .photo-frame{position:relative;width:min(100%,370px);margin-left:auto;background:var(--soft);border:1px solid var(--line);padding:10px;border-radius:12px;box-shadow:var(--shadow)}
     .photo-frame:before{content:"";position:absolute;inset:18px -14px -14px 18px;border:1px solid var(--line);border-radius:12px;z-index:-1}
-    .portrait{display:block;width:100%;aspect-ratio:4/4.3;object-fit:cover;object-position:center 24%;border-radius:7px;background:var(--soft)}
+    .portrait{display:block;width:100%;aspect-ratio:420/410;object-fit:cover;object-position:center 25%;border-radius:7px;background:var(--soft)}
     .photo-caption{display:flex;justify-content:space-between;gap:10px;padding:12px 3px 3px;font:9px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
     .photo-caption b{color:var(--accent);font-weight:500}
-    .dev-widget{position:absolute;left:0;bottom:0;width:235px;padding:13px 15px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
-    .widget-top{display:flex;justify-content:space-between;align-items:center;color:var(--faint);font:8px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding-bottom:9px;border-bottom:1px solid var(--line)}
-    .widget-lights{display:flex;gap:4px}
-    .widget-lights i{height:5px;width:5px;border-radius:50%;background:#7dbb8f;animation:led 1.7s ease-in-out infinite}
-    .widget-lights i:nth-child(2){animation-delay:.35s;background:#d6b36b}
-    .widget-lights i:nth-child(3){animation-delay:.7s;background:#79b7b4}
-    .widget-row{display:flex;align-items:center;justify-content:space-between;padding-top:9px;font:9px var(--mono)}
-    .widget-row span:first-child{color:var(--muted)}
-    .widget-row span:last-child{color:var(--accent)}
-    @keyframes led{0%,100%{opacity:.35;box-shadow:0 0 0 transparent}50%{opacity:1;box-shadow:0 0 8px currentColor}}
+    .code-panel{position:absolute;z-index:4;top:-19px;left:0;width:238px;padding:11px 13px 12px;border:1px solid rgba(156,190,163,.28);border-radius:9px;background:#101a14;color:#dce9df;box-shadow:0 18px 42px rgba(11,26,17,.24);transform:rotate(-1deg);overflow:hidden}
+    .code-panel:after{content:"";position:absolute;left:0;right:0;top:-35%;height:1px;background:linear-gradient(90deg,transparent,#a6d6b1,transparent);box-shadow:0 0 12px #9bd4a9;animation:scan 5.5s ease-in-out infinite;pointer-events:none}
+    .editor-head{display:flex;align-items:center;gap:8px;padding-bottom:9px;border-bottom:1px solid rgba(168,196,174,.15);color:#91a998;font:8px var(--mono);letter-spacing:.06em}
+    .editor-dots{display:flex;gap:4px}.editor-dots i{width:5px;height:5px;border-radius:50%;background:#d87570}.editor-dots i:nth-child(2){background:#d6b56c}.editor-dots i:nth-child(3){background:#77b88b}
+    .editor-file{margin-left:auto;color:#b7c7ba}
+    .editor-code{padding-top:9px;font:8px/1.85 var(--mono);white-space:nowrap}
+    .code-line{opacity:0;transform:translateY(4px);animation:lineIn .4s ease forwards;animation-delay:var(--delay,0s)}
+    .line-no{display:inline-block;width:18px;color:#61796a}.code-key{color:#9cbdff}.code-type{color:#f0c789}.code-string{color:#a6d6a9}.code-method{color:#89c9c0}
+    .terminal-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;padding-top:7px;border-top:1px solid rgba(168,196,174,.13);color:#88a18e;font:7px var(--mono);letter-spacing:.05em}
+    .terminal-cursor{display:inline-block;width:5px;height:9px;margin-left:3px;vertical-align:-2px;background:#a6d6a9;animation:cursorBlink .9s steps(2,start) infinite}
+    .dev-widget{position:absolute;left:0;bottom:0;width:247px;padding:13px 15px;background:#111c15;color:#dce9df;border:1px solid rgba(156,190,163,.27);border-radius:10px;box-shadow:0 18px 42px rgba(11,26,17,.22)}
+    .widget-top{display:flex;justify-content:space-between;align-items:center;color:#9bb09e;font:8px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding-bottom:9px;border-bottom:1px solid rgba(168,196,174,.15)}
+    .widget-online{display:inline-flex;align-items:center;gap:5px;color:#a9d5b0;font-size:7px}
+    .widget-online:before{content:"";width:5px;height:5px;border-radius:50%;background:#83d29b;box-shadow:0 0 8px #83d29b;animation:led 1.4s ease-in-out infinite}
+    .widget-row{display:flex;align-items:center;justify-content:space-between;padding-top:9px;font:8px var(--mono)}
+    .widget-row span:first-child{color:#8da394}
+    .widget-row span:last-child{display:flex;align-items:center;gap:6px;color:#d4e5d7}
+    .row-led{height:5px;width:5px;border-radius:50%;background:#82d19a;box-shadow:0 0 7px rgba(130,209,154,.9);animation:led 1.65s ease-in-out infinite}
+    .widget-row:nth-of-type(3) .row-led{animation-delay:.45s;background:#71c5bb;box-shadow:0 0 7px rgba(113,197,187,.8)}
+    .widget-row:nth-of-type(4) .row-led{animation-delay:.9s;background:#d9b46e;box-shadow:0 0 7px rgba(217,180,110,.8)}
+    .widget-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:11px;padding-top:8px;border-top:1px solid rgba(168,196,174,.15);color:#829989;font:7px var(--mono);letter-spacing:.08em}
+    .activity-bars{display:flex;gap:3px;flex:1;justify-content:flex-end}
+    .activity-bars i{height:3px;width:12%;border-radius:3px;background:#4b9064;animation:power 1.8s ease-in-out infinite}
+    .activity-bars i:nth-child(2){animation-delay:.15s}.activity-bars i:nth-child(3){animation-delay:.3s}.activity-bars i:nth-child(4){animation-delay:.45s}.activity-bars i:nth-child(5){animation-delay:.6s}
+    @keyframes led{0%,100%{opacity:.35;filter:brightness(.8)}50%{opacity:1;filter:brightness(1.45)}}
+    @keyframes power{0%,100%{opacity:.25}50%{opacity:1;box-shadow:0 0 7px #70c989}}
+    @keyframes lineIn{to{opacity:1;transform:translateY(0)}}
+    @keyframes scan{0%,100%{transform:translateY(0);opacity:0}15%,75%{opacity:.9}88%{transform:translateY(160px);opacity:0}}
+    @keyframes cursorBlink{50%{opacity:0}}
     .ticker{border-block:1px solid var(--line);background:var(--paper)}
     .ticker-inner{min-height:61px;display:flex;align-items:center;gap:27px;overflow:hidden}
     .ticker-label{flex:none;color:var(--faint);font:9px var(--mono);text-transform:uppercase;letter-spacing:.1em}
@@ -129,7 +148,8 @@
       .navlinks.open{display:flex}.navlinks a{padding:10px}
       .hero{padding:57px 0 56px}.hero-grid{grid-template-columns:1fr;gap:35px}
       .visual{max-width:430px;margin:0 auto;padding-left:0}.photo-frame{width:min(82%,360px);margin:0 auto}
-      .dev-widget{left:0;bottom:0;width:215px}
+      .code-panel{top:-15px;left:-2px;width:210px;transform:scale(.94);transform-origin:top left}
+      .dev-widget{left:0;bottom:0;width:220px;padding:11px 12px}
       section.content{padding:62px 0}
       .section-top{display:block}.section-copy{margin-top:12px}
       .about-grid{grid-template-columns:1fr;gap:28px}.about-aside{grid-template-columns:1fr 1fr;border-left:0;border-top:1px solid var(--line);padding:18px 0 0}
@@ -176,11 +196,25 @@
             <img class="portrait" src="assets/vignesh-portrait.webp" alt="Vignesh Madhav Kumar Edara" width="564" height="551">
             <div class="photo-caption"><span>Vignesh Madhav Kumar</span><b>Developer</b></div>
           </div>
-          <div class="dev-widget" aria-label="Decorative development stack indicator">
-            <div class="widget-top"><span>Development stack</span><span class="widget-lights"><i></i><i></i><i></i></span></div>
-            <div class="widget-row"><span>Backend</span><span>C# / .NET</span></div>
-            <div class="widget-row"><span>Frontend</span><span>Angular</span></div>
-            <div class="widget-row"><span>Database</span><span>SQL Server</span></div>
+          <div class="code-panel" aria-label="Decorative animated C sharp code editor">
+            <div class="editor-head"><span class="editor-dots"><i></i><i></i><i></i></span><span class="editor-file">EmployeeService.cs</span></div>
+            <div class="editor-code">
+              <div class="code-line" style="--delay:.15s"><span class="line-no">01</span><span class="code-key">public async Task</span> AddAsync(</div>
+              <div class="code-line" style="--delay:.35s"><span class="line-no">02</span>&nbsp;&nbsp;<span class="code-type">Employee</span> employee,</div>
+              <div class="code-line" style="--delay:.55s"><span class="line-no">03</span>&nbsp;&nbsp;<span class="code-type">CancellationToken</span> ct)</div>
+              <div class="code-line" style="--delay:.75s"><span class="line-no">04</span>{</div>
+              <div class="code-line" style="--delay:.95s"><span class="line-no">05</span>&nbsp;&nbsp;db.Employees.Add(employee);</div>
+              <div class="code-line" style="--delay:1.15s"><span class="line-no">06</span>&nbsp;&nbsp;<span class="code-key">await</span> db.SaveChangesAsync(ct);</div>
+              <div class="code-line" style="--delay:1.35s"><span class="line-no">07</span>}</div>
+            </div>
+            <div class="terminal-foot"><span>BUILD / <b style="color:#a6d6a9">READY</b></span><span id="terminalCommand">dotnet build</span><i class="terminal-cursor"></i></div>
+          </div>
+          <div class="dev-widget" aria-label="Decorative application stack status">
+            <div class="widget-top"><span>Application nodes</span><span class="widget-online">3 ONLINE</span></div>
+            <div class="widget-row"><span>API / SERVICES</span><span><i class="row-led"></i> .NET</span></div>
+            <div class="widget-row"><span>DATA / STORAGE</span><span><i class="row-led"></i> SQL SERVER</span></div>
+            <div class="widget-row"><span>WEB CLIENT</span><span><i class="row-led"></i> ANGULAR</span></div>
+            <div class="widget-foot"><span>ACTIVITY</span><span class="activity-bars"><i></i><i></i><i></i><i></i><i></i></span><span>LOCAL</span></div>
           </div>
         </div>
       </div>
@@ -277,6 +311,35 @@
       if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
     }), { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Cycle a few familiar local development commands in the decorative code panel.
+    const terminalCommand = document.getElementById('terminalCommand');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (terminalCommand && !reducedMotion) {
+      const commands = ['dotnet build', 'dotnet test', 'git status'];
+      let commandIndex = 0;
+      window.setInterval(() => {
+        commandIndex = (commandIndex + 1) % commands.length;
+        terminalCommand.textContent = commands[commandIndex];
+        terminalCommand.animate(
+          [{ opacity: .25, transform: 'translateY(3px)' }, { opacity: 1, transform: 'translateY(0)' }],
+          { duration: 260, easing: 'ease-out' }
+        );
+      }, 2800);
+    }
+
+    // Highlight the current section in the navigation while scrolling.
+    const navItems = [...document.querySelectorAll('.navlinks a[href^="#"]')];
+    const navSections = navItems.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    if ('IntersectionObserver' in window && navSections.length) {
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          navItems.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        });
+      }, { rootMargin: '-30% 0px -60% 0px' });
+      navSections.forEach(section => sectionObserver.observe(section));
+    }
   </script>
 </body>
 </html>
