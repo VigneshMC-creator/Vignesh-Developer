@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+  <meta name="description" content="Vignesh — Full Stack .NET Developer focused on C#, ASP.NET Core, Angular, Entity Framework Core and SQL Server." />
+  <meta property="og:title" content="Vignesh | Full Stack .NET Developer" />
+  <meta property="og:description" content="Building thoughtful web experiences with .NET, Angular and SQL Server." />
+  <meta property="og:type" content="website" />
+  <title>Vignesh — Full Stack .NET Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080b12;
+      --bg-soft: #0d121d;
+      --panel: rgba(17, 24, 39, .72);
+      --panel-solid: #111827;
+      --line: rgba(148, 163, 184, .16);
+      --text: #edf2fa;
+      --muted: #9aa8bd;
+      --subtle: #64748b;
+      --cyan: #66e3dc;
+      --blue: #6c91ff;
+      --violet: #a78bfa;
+      --lime: #b6f09c;
+      --mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: "Manrope", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --radius: 24px;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0; color: var(--text); background: var(--bg); font-family: var(--sans);
+      line-height: 1.65; overflow-x: hidden;
+      background-image: radial-gradient(rgba(148,163,184,.12) .7px, transparent .7px);
+      background-size: 24px 24px;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background: linear-gradient(180deg, rgba(8,11,18,.35), #080b12 78%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    ::selection { background: rgba(102,227,220,.28); color: #fff; }
+    .ambient { position: fixed; width: 480px; height: 480px; border-radius: 50%; filter: blur(110px); opacity: .14; pointer-events: none; z-index: -1; }
+    .ambient.one { top: -190px; left: -170px; background: #3569ff; }
+    .ambient.two { top: 36%; right: -260px; background: #17b6ab; opacity: .1; }
+    .wrap { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(148,163,184,.1);
+      background: rgba(8,11,18,.78); backdrop-filter: blur(18px);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.04em; }
+    .brand-mark {
+      display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px;
+      color: #081117; font-family: var(--mono); font-size: 16px; font-weight: 500;
+      background: linear-gradient(135deg, var(--cyan), var(--lime)); box-shadow: 0 8px 30px rgba(102,227,220,.18);
+    }
+    .brand-name { font-size: 15px; }
+    .brand-name span { color: var(--muted); font-weight: 500; }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: #aab5c7; font-size: 13px; font-weight: 700; }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta { color: var(--text) !important; border: 1px solid rgba(102,227,220,.34); padding: 10px 16px; border-radius: 99px; }
+    .nav-cta:hover { background: rgba(102,227,220,.1); }
+    .menu-btn { display: none; border: 1px solid var(--line); background: #101827; color: var(--text); border-radius: 12px; width: 42px; height: 42px; cursor: pointer; }
+    .hero { padding: 92px 0 78px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 64px; }
+    .eyebrow { display: inline-flex; gap: 10px; align-items: center; color: var(--cyan); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .14em; }
+    .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 5px rgba(182,240,156,.1), 0 0 18px var(--lime); }
+    h1 { font-size: clamp(46px, 6.2vw, 76px); letter-spacing: -.075em; line-height: 1.04; margin: 22px 0 22px; font-weight: 800; }
+    h1 .gradient { display: inline-block; color: transparent; background: linear-gradient(100deg, var(--cyan) 2%, #8cb3ff 50%, #c2a2ff 96%); -webkit-background-clip: text; background-clip: text; }
+    .hero-copy { max-width: 600px; color: #aab5c7; font-size: 16px; line-height: 1.9; margin: 0; }
+    .hero-copy strong { color: #e9f1fb; font-weight: 700; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; justify-content: center; border-radius: 13px; padding: 13px 18px; font-size: 13px; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { color: #071217; background: linear-gradient(100deg, var(--cyan), var(--lime)); box-shadow: 0 12px 34px rgba(102,227,220,.15); }
+    .btn-primary:hover { box-shadow: 0 16px 42px rgba(102,227,220,.24); }
+    .btn-ghost { color: var(--text); border: 1px solid var(--line); background: rgba(17,24,39,.5); }
+    .btn-ghost:hover { background: rgba(148,163,184,.1); }
+    .hero-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 21px; margin-top: 34px; color: #8190a6; font: 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta b { color: #dbe7f5; font-weight: 500; }
+    .hero-visual { position: relative; min-height: 440px; display: grid; place-items: center; }
+    .orbit { position: absolute; width: 370px; height: 370px; border-radius: 50%; border: 1px solid rgba(102,227,220,.13); transform: rotate(-18deg); }
+    .orbit::before, .orbit::after { content: ""; position: absolute; border: 1px solid rgba(108,145,255,.16); border-radius: 50%; inset: 24px; transform: rotate(35deg); }
+    .orbit::after { inset: 52px; border-color: rgba(167,139,250,.14); transform: rotate(-52deg); }
+    .orbit-dot { position: absolute; top: 32px; right: 47px; width: 11px; height: 11px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 25px var(--cyan); }
+    .profile-card {
+      position: relative; width: min(100%, 390px); border: 1px solid rgba(148,163,184,.2); border-radius: 23px;
+      background: linear-gradient(145deg, rgba(22,32,49,.94), rgba(11,17,28,.94)); box-shadow: 0 30px 90px rgba(0,0,0,.45);
+      overflow: hidden; transform: rotate(2deg);
+    }
+    .profile-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), var(--violet), transparent); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; padding: 15px 17px; border-bottom: 1px solid rgba(148,163,184,.12); color: #71839b; font: 10px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    .window-dots { display: flex; gap: 6px; }
+    .window-dots i { width: 7px; height: 7px; border-radius: 50%; background: #fb7185; }
+    .window-dots i:nth-child(2) { background: #fbbf24; }
+    .window-dots i:nth-child(3) { background: #4ade80; }
+    .card-body { padding: 25px; }
+    .identity { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+    .avatar-wrap { width: 68px; height: 68px; padding: 3px; border-radius: 20px; background: linear-gradient(135deg, var(--cyan), var(--blue), var(--violet)); }
+    .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 17px; display: block; }
+    .identity h2 { margin: 0; font-size: 19px; letter-spacing: -.04em; }
+    .identity p { margin: 3px 0 0; color: #8b9ab0; font-size: 11px; }
+    .codebox { border: 1px solid rgba(148,163,184,.13); background: rgba(4,8,15,.66); border-radius: 14px; padding: 17px 17px 18px; font: 11px/2 var(--mono); color: #b4c3d7; overflow: hidden; }
+    .codebox .comment { color: #66829b; }
+    .codebox .key { color: #9f9cff; }
+    .codebox .value { color: #9ee6c7; }
+    .codebox .property { color: #7cc7f8; }
+    .card-footer { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 17px; }
+    .mini-tag { border: 1px solid rgba(102,227,220,.18); border-radius: 7px; color: #9fded9; background: rgba(102,227,220,.06); padding: 5px 8px; font: 9px var(--mono); }
+    .float-chip { position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid rgba(148,163,184,.18); border-radius: 12px; background: rgba(15,23,38,.92); color: #d6e1ef; font: 10px var(--mono); box-shadow: 0 12px 35px rgba(0,0,0,.3); }
+    .float-chip.left { left: -8px; bottom: 74px; }
+    .float-chip.right { right: -10px; top: 67px; }
+    .chip-icon { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 7px; background: rgba(102,227,220,.12); color: var(--cyan); font-size: 12px; }
+    .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(15,22,34,.55); }
+    .strip-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 0; overflow: hidden; }
+    .strip-label { color: #75869e; flex: 0 0 auto; font: 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .stack-marquee { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+    .stack-pill { display: inline-flex; align-items: center; gap: 8px; color: #b7c5d6; border: 1px solid rgba(148,163,184,.14); background: rgba(148,163,184,.045); border-radius: 999px; padding: 7px 11px; font: 10px var(--mono); }
+    .stack-pill em { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; }
+    section { padding: 102px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 26px; margin-bottom: 36px; }
+    .section-index { color: var(--cyan); font: 11px var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    h2.section-title { font-size: clamp(32px, 4vw, 48px); line-height: 1.12; letter-spacing: -.065em; margin: 12px 0 0; }
+    .section-desc { color: var(--muted); max-width: 420px; margin: 0; font-size: 13px; line-height: 1.9; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .surface { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(17,24,39,.82), rgba(11,17,28,.78)); padding: 28px; }
+    .about-main p { margin: 0 0 15px; color: #aab7c9; font-size: 14px; line-height: 2; }
+    .about-main p:last-child { margin-bottom: 0; }
+    .about-main strong { color: #e9f1fb; }
+    .principle-list { display: grid; gap: 12px; }
+    .principle { display: flex; gap: 14px; align-items: flex-start; padding: 13px; background: rgba(148,163,184,.045); border: 1px solid rgba(148,163,184,.1); border-radius: 13px; }
+    .principle-num { flex: 0 0 28px; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 9px; background: rgba(102,227,220,.1); color: var(--cyan); font: 10px var(--mono); }
+    .principle strong { display: block; color: #e5edf8; font-size: 12px; margin-bottom: 2px; }
+    .principle span { display: block; color: #8292a9; font-size: 11px; line-height: 1.7; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .skill-card { min-height: 220px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: rgba(17,24,39,.67); transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+    .skill-card:hover { transform: translateY(-5px); border-color: rgba(102,227,220,.32); background: rgba(20,31,47,.85); }
+    .skill-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; margin-bottom: 20px; font-size: 16px; color: var(--cyan); background: rgba(102,227,220,.1); }
+    .skill-card:nth-child(2) .skill-icon { color: #9ab3ff; background: rgba(108,145,255,.12); }
+    .skill-card:nth-child(3) .skill-icon { color: #c4a4ff; background: rgba(167,139,250,.12); }
+    .skill-card:nth-child(4) .skill-icon { color: var(--lime); background: rgba(182,240,156,.1); }
+    .skill-card h3 { font-size: 14px; margin: 0 0 12px; letter-spacing: -.02em; }
+    .skill-card p { margin: 0; color: #8796ab; font-size: 11px; line-height: 2; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project { padding: 24px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, rgba(20,29,45,.8), rgba(12,18,29,.85)); position: relative; overflow: hidden; transition: transform .25s ease, border-color .25s ease; }
+    .project:hover { transform: translateY(-5px); border-color: rgba(108,145,255,.38); }
+    .project::after { content: ""; position: absolute; width: 180px; height: 180px; border-radius: 50%; right: -90px; top: -100px; background: rgba(102,227,220,.09); filter: blur(20px); pointer-events: none; }
+    .project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 23px; }
+    .project-code { color: #667b94; font: 11px var(--mono); }
+    .project-status { color: #9fe1d9; border: 1px solid rgba(102,227,220,.2); background: rgba(102,227,220,.06); border-radius: 99px; padding: 5px 9px; font: 9px var(--mono); text-transform: uppercase; }
+    .project h3 { font-size: 20px; letter-spacing: -.045em; margin: 0 0 10px; }
+    .project p { color: #94a4b9; font-size: 12px; line-height: 1.9; margin: 0; min-height: 70px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+    .project-tags span { color: #aebbd0; border: 1px solid rgba(148,163,184,.14); border-radius: 7px; padding: 5px 8px; font: 9px var(--mono); }
+    .project-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 22px; color: var(--cyan); font-size: 11px; font-weight: 800; }
+    .project-link:hover { color: #fff; }
+    .learning-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .learn-card { padding: 21px; border: 1px solid var(--line); border-radius: 17px; background: rgba(17,24,39,.56); }
+    .learn-card small { color: var(--cyan); font: 10px var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+    .learn-card h3 { font-size: 14px; margin: 11px 0 7px; }
+    .learn-card p { margin: 0; color: #8796ab; font-size: 11px; line-height: 1.8; }
+    .contact-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.1fr .9fr; gap: 30px; align-items: center; padding: 42px; border: 1px solid rgba(102,227,220,.2); border-radius: 26px; background: radial-gradient(ellipse at 100% 0%, rgba(108,145,255,.16), transparent 42%), linear-gradient(135deg, rgba(17,30,43,.96), rgba(11,17,28,.95)); }
+    .contact-panel::after { content: ""; position: absolute; width: 280px; height: 280px; border: 1px solid rgba(102,227,220,.13); border-radius: 50%; right: 6%; top: -150px; box-shadow: 0 0 0 25px rgba(102,227,220,.025), 0 0 0 55px rgba(102,227,220,.02); pointer-events: none; }
+    .contact-panel h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.1; letter-spacing: -.065em; margin: 12px 0; }
+    .contact-panel p { color: #9cacc0; font-size: 13px; line-height: 1.9; max-width: 510px; margin: 0; }
+    .contact-actions { display: flex; justify-content: flex-end; position: relative; z-index: 1; }
+    footer { padding: 30px 0 38px; border-top: 1px solid var(--line); color: #68788f; font: 10px var(--mono); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-inner a { color: #9daec3; }
+    .footer-inner a:hover { color: var(--cyan); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .progress { position: fixed; top: 0; left: 0; width: 0; height: 2px; z-index: 100; background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet)); }
+    @media (max-width: 900px) {
+      .hero-grid { gap: 24px; grid-template-columns: 1fr  .9fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .float-chip.left { left: -20px; }
+      .float-chip.right { right: -20px; }
+    }
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 32px, var(--max)); }
+      .nav { min-height: 68px; }
+      .menu-btn { display: inline-grid; place-items: center; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 16px; right: 16px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: rgba(10,15,24,.97); flex-direction: column; align-items: stretch; gap: 0; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 9px; }
+      .nav-cta { text-align: center; margin-top: 5px; }
+      .hero { padding: 68px 0 58px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+      h1 { font-size: clamp(45px, 12vw, 67px); }
+      .hero-visual { min-height: 410px; margin: 10px 0 0; }
+      .profile-card { width: min(100% - 28px, 390px); }
+      .orbit { width: 330px; height: 330px; }
+      .float-chip.left { left: 0; bottom: 42px; }
+      .float-chip.right { right: -2px; top: 42px; }
+      .strip-inner { display: block; }
+      .stack-marquee { justify-content: flex-start; margin-top: 13px; }
+      section { padding: 72px 0; }
+      .section-head { display: block; }
+      .section-desc { margin-top: 16px; }
+      .about-grid, .project-grid, .contact-panel { grid-template-columns: 1fr; }
+      .contact-panel { padding: 28px; }
+      .contact-actions { justify-content: flex-start; }
+      .learning-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 430px) {
+      .skills-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .skill-card { min-height: 205px; padding: 16px; }
+      .card-body { padding: 18px; }
+      .hero-meta { gap: 12px; }
+      .float-chip { font-size: 9px; padding: 8px 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="ambient one"></div><div class="ambient two"></div>
+
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Vignesh home">
+        <span class="brand-mark">&lt;/&gt;</span>
+        <span class="brand-name">VIGNESH<span> .DEV</span></span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#stack">Tech stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#learning">Focus</a>
+        <a class="nav-cta" href="#contact">Let's connect ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="pulse"></span> Full Stack .NET Developer</div>
+          <h1>Building the<br /><span class="gradient">logic behind</span><br />the experience.</h1>
+          <p class="hero-copy">
+            I'm <strong>Vignesh</strong> — a developer working across <strong>C#, ASP.NET Core, Angular and SQL Server</strong>.
+            I enjoy turning requirements into useful applications and understanding every layer,
+            from the user interface to the database.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore my work <span>↘</span></a>
+            <a class="btn btn-ghost" href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+          </div>
+          <div class="hero-meta">
+            <span><b>01</b> Build with purpose</span>
+            <span><b>02</b> Learn continuously</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Developer profile visual">
+          <div class="orbit"><span class="orbit-dot"></span></div>
+          <div class="float-chip left"><span class="chip-icon">✦</span> Clean code mindset</div>
+          <div class="float-chip right"><span class="chip-icon">⌘</span> .NET ecosystem</div>
+          <div class="profile-card">
+            <div class="card-top">
+              <div class="window-dots"><i></i><i></i><i></i></div>
+              <span>developer.profile</span>
+              <span>● online</span>
+            </div>
+            <div class="card-body">
+              <div class="identity">
+                <div class="avatar-wrap"><img src="https://avatars.githubusercontent.com/u/217372994?v=4" alt="Vignesh's GitHub profile avatar" /></div>
+                <div><h2>Vignesh</h2><p>Full Stack .NET Developer</p></div>
+              </div>
+              <div class="codebox" aria-label="Developer profile code illustration">
+                <div><span class="comment">// A little about how I work</span></div>
+                <div><span class="key">const</span> developer = {</div>
+                <div>&nbsp;&nbsp;<span class="property">backend</span>: <span class="value">"C# / ASP.NET Core"</span>,</div>
+                <div>&nbsp;&nbsp;<span class="property">frontend</span>: <span class="value">"Angular"</span>,</div>
+                <div>&nbsp;&nbsp;<span class="property">database</span>: <span class="value">"SQL Server"</span>,</div>
+                <div>&nbsp;&nbsp;<span class="property">mindset</span>: <span class="value">"Understand first"</span></div>
+                <div>};</div>
+                <div style="margin-top:8px"><span class="key">while</span> (learning) { <span class="value">build();</span> }</div>
+              </div>
+              <div class="card-footer"><span class="mini-tag">.NET</span><span class="mini-tag">ANGULAR</span><span class="mini-tag">SQL</span><span class="mini-tag">APIs</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="wrap strip-inner">
+        <div class="strip-label">Technologies in my workflow</div>
+        <div class="stack-marquee">
+          <span class="stack-pill"><em></em>C#</span>
+          <span class="stack-pill"><em></em>.NET 9</span>
+          <span class="stack-pill"><em></em>ASP.NET Core</span>
+          <span class="stack-pill"><em></em>Angular 20</span>
+          <span class="stack-pill"><em></em>EF Core</span>
+          <span class="stack-pill"><em></em>SQL Server</span>
+          <span class="stack-pill"><em></em>TypeScript</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-index">01 / A little about me</div><h2 class="section-title">Curious by nature.<br />Engineer by practice.</h2></div>
+          <p class="section-desc">I like understanding how the pieces fit together: clean interfaces, reliable APIs, data that makes sense, and code that another developer can follow.</p>
+        </div>
+        <div class="about-grid">
+          <div class="surface about-main reveal">
+            <p>My focus is <strong>full-stack development in the .NET ecosystem</strong>. I work with backend concepts, frontend application structure, and relational data, while continuously strengthening the fundamentals behind them.</p>
+            <p>I'm especially interested in <strong>API design, Entity Framework Core, application architecture, and system design</strong>. I learn best by building, testing, debugging, and documenting what I discover.</p>
+            <p>I also use AI-assisted tools as part of my workflow — while keeping code understanding, review, and engineering decisions my responsibility.</p>
+          </div>
+          <div class="surface reveal">
+            <div class="principle-list">
+              <div class="principle"><span class="principle-num">01</span><div><strong>Understand the problem</strong><span>Start with requirements, constraints, and the expected outcome.</span></div></div>
+              <div class="principle"><span class="principle-num">02</span><div><strong>Design with intent</strong><span>Choose a straightforward approach and understand its trade-offs.</span></div></div>
+              <div class="principle"><span class="principle-num">03</span><div><strong>Build and validate</strong><span>Implement in small steps, test behavior, and learn from feedback.</span></div></div>
+              <div class="principle"><span class="principle-num">04</span><div><strong>Keep improving</strong><span>Refine the code, the documentation, and my understanding.</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-index">02 / Tools of the trade</div><h2 class="section-title">My technology stack.</h2></div>
+          <p class="section-desc">The tools and concepts I use, practise, and continue to explore as I grow as a full-stack developer.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card reveal"><div class="skill-icon">⌘</div><h3>Backend engineering</h3><p>C#<br />.NET / ASP.NET Core<br />REST API development<br />Entity Framework Core<br />LINQ & dependency injection</p></article>
+          <article class="skill-card reveal"><div class="skill-icon">◈</div><h3>Frontend development</h3><p>Angular<br />TypeScript<br />JavaScript<br />HTML & CSS<br />Components, routing & services</p></article>
+          <article class="skill-card reveal"><div class="skill-icon">▤</div><h3>Data & persistence</h3><p>Microsoft SQL Server<br />Relational data modelling<br />EF Core migrations<br />Queries & database fundamentals</p></article>
+          <article class="skill-card reveal"><div class="skill-icon">⌁</div><h3>Tools & engineering</h3><p>Visual Studio<br />VS Code<br />Git & GitHub<br />SOLID & design patterns<br />Azure fundamentals</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-index">03 / Selected work</div><h2 class="section-title">Things I've been building.</h2></div>
+          <p class="section-desc">A small selection of my public and personal development work. More detailed documentation and project walkthroughs will be added as they are ready.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project reveal">
+            <div class="project-top"><span class="project-code">PROJECT / 001</span><span class="project-status">Public repository</span></div>
+            <h3>Employee Management</h3>
+            <p>An Angular 20 application repository structured with feature areas, models, services, and application routing. This project is part of my frontend and full-stack development practice.</p>
+            <div class="project-tags"><span>Angular 20</span><span>TypeScript</span><span>Angular Router</span></div>
+            <a class="project-link" href="https://github.com/VigneshMC-creator/Employee-Management" target="_blank" rel="noreferrer">View repository <span>↗</span></a>
+          </article>
+          <article class="project reveal">
+            <div class="project-top"><span class="project-code">PROJECT / 002</span><span class="project-status">Personal project</span></div>
+            <h3>TicketBook API</h3>
+            <p>A .NET 9 Web API project exploring controller and service organisation, Entity Framework Core, SQL Server, and authentication-related packages. The source repository is currently private.</p>
+            <div class="project-tags"><span>.NET 9</span><span>EF Core</span><span>SQL Server</span><span>JWT / Identity</span></div>
+            <span class="project-link" style="color:#8e9bb0; cursor:default">Private repository · Details on request</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="learning">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-index">04 / Always learning</div><h2 class="section-title">Where I'm going deeper.</h2></div>
+          <p class="section-desc">A snapshot of the engineering topics I'm actively strengthening. The goal is practical understanding, not just a list of keywords.</p>
+        </div>
+        <div class="learning-grid">
+          <article class="learn-card reveal"><small>Backend</small><h3>ASP.NET Core & API design</h3><p>Middleware, dependency injection, authentication, validation, error handling, and API structure.</p></article>
+          <article class="learn-card reveal"><small>Data</small><h3>EF Core & SQL Server</h3><p>Change tracking, relationships, query efficiency, indexing, transactions, and data access choices.</p></article>
+          <article class="learn-card reveal"><small>Architecture</small><h3>System design & clean code</h3><p>SOLID principles, design patterns, maintainability, scalability, and understanding trade-offs.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-panel reveal">
+          <div>
+            <div class="section-index">05 / Let's connect</div>
+            <h2>Good work starts<br />with a conversation.</h2>
+            <p>Interested in .NET, backend engineering, or building useful software? Connect with me on GitHub and follow along as I keep learning and shipping.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">Connect on GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> VIGNESH .DEV — BUILT WITH CURIOSITY.</span>
+      <span><a href="#home">Back to top ↑</a> &nbsp;·&nbsp; <a href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">GitHub ↗</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.textContent = isOpen ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0) + '%';
+    }, { passive: true });
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
