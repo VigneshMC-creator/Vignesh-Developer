@@ -36,38 +36,6 @@
   a:hover { color: var(--accent); }
 }
 
-/* Angular-inspired four-corner reticle cursor. No ring or crosshair. */
-.dev-cursor {
-  --cursor-size: 18px;
-  display: none; position: fixed; z-index: 1000;
-  left: 0; top: 0; width: var(--cursor-size); height: var(--cursor-size);
-  pointer-events: none; transform: translate(-50%, -50%);
-  opacity: 0; transition: opacity .12s ease, width .12s ease, height .12s ease;
-  background:
-    linear-gradient(var(--accent),var(--accent)) left top / 7px 1.5px no-repeat,
-    linear-gradient(var(--accent),var(--accent)) left top / 1.5px 7px no-repeat,
-    linear-gradient(var(--accent),var(--accent)) right top / 7px 1.5px no-repeat,
-    linear-gradient(var(--accent),var(--accent)) right top / 1.5px 7px no-repeat,
-    linear-gradient(var(--accent),var(--accent)) left bottom / 7px 1.5px no-repeat,
-    linear-gradient(var(--accent),var(--accent)) left bottom / 1.5px 7px no-repeat,
-    linear-gradient(var(--accent),var(--accent)) right bottom / 7px 1.5px no-repeat,
-    linear-gradient(var(--accent),var(--accent)) right bottom / 1.5px 7px no-repeat;
-}
-.cursor-core {
-  position: absolute; left: 50%; top: 50%;
-  width: 3px; height: 3px; border-radius: 50%;
-  background: var(--accent); transform: translate(-50%,-50%);
-}
-.dev-cursor.is-visible { opacity: 1; }
-.dev-cursor.is-active { --cursor-size: 26px; }
-.dev-cursor.is-active .cursor-core { width: 5px; height: 5px; }
-.dev-cursor.is-hidden { opacity: 0; }
-
-@media (hover: hover) and (pointer: fine) {
-  .dev-cursor { display: block; }
-  body.dev-pointer, body.dev-pointer a, body.dev-pointer button { cursor: none; }
-  body.dev-pointer input, body.dev-pointer textarea { cursor: text; }
-}
 @media (max-width: 900px) {
   .main-nav { gap: 14px; }
   .main-nav a { font-size: 10px; }
