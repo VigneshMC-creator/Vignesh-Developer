@@ -6,7 +6,7 @@ A minimal, responsive personal portfolio built with HTML, CSS, and vanilla JavaS
 
 **Website:** [Vignesh's Developer Portfolio](https://vigneshmc-creator.github.io/Vignesh-Developer/)
 
-The portfolio includes a short introduction, profile photo, technology stack, selected projects, and contact links.
+The portfolio includes a short introduction, profile photo, technology stack, selected projects, and contact links. Visitors can switch between light and dark themes; their preference is remembered in the browser.
 
 ## Technology interests
 
