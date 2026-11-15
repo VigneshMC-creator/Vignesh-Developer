@@ -14,7 +14,6 @@ export class ContactComponent {
   private readonly formBuilder = inject(FormBuilder);
   private readonly contactService = inject(ContactService);
 
-  readonly currentYear = new Date().getFullYear();
 
   readonly form = this.formBuilder.nonNullable.group({
     name: ['', [Validators.required, Validators.maxLength(100)]],
