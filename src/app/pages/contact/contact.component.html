@@ -1,0 +1,78 @@
+<section class="contact-page">
+  <div class="contact-shell">
+    <div class="contact-topline">
+      <div class="contact-kicker">CONTACT / VIGNESH</div>
+      <span class="contact-ref">DIRECT ENQUIRY</span>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-heading">
+        <h1>Send a Direct Message</h1>
+        <p>
+          Interested in a .NET role, project or collaboration? Leave your details
+          below and I’ll get back to you by email.
+        </p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Your Name <span>*</span></label>
+            <input id="name" type="text" formControlName="name" autocomplete="name"
+              placeholder="Your name"
+              [attr.aria-invalid]="form.controls.name.invalid && form.controls.name.touched">
+            @if (form.controls.name.touched && form.controls.name.hasError('required')) {
+              <small class="field-error">Please enter your name.</small>
+            }
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address <span>*</span></label>
+            <input id="email" type="email" formControlName="email" autocomplete="email"
+              placeholder="you@example.com"
+              [attr.aria-invalid]="form.controls.email.invalid && form.controls.email.touched">
+            @if (form.controls.email.touched && form.controls.email.invalid) {
+              <small class="field-error">Enter a valid email address.</small>
+            }
+          </div>
+
+          <div class="field full">
+            <label for="organization">Company / Organization</label>
+            <input id="organization" type="text" formControlName="organization"
+              autocomplete="organization" placeholder="e.g. Company or organization">
+          </div>
+
+          <div class="field full">
+            <label for="message">Message / Role Details <span>*</span></label>
+            <textarea id="message" formControlName="message"
+              placeholder="Share the opportunity, project details or what you would like to discuss..."
+              [attr.aria-invalid]="form.controls.message.invalid && form.controls.message.touched"></textarea>
+            @if (form.controls.message.touched && form.controls.message.hasError('required')) {
+              <small class="field-error">Please add a short message.</small>
+            }
+          </div>
+        </div>
+
+        <button class="send-button" type="submit" [disabled]="sending">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 3-7.2 18-3.7-7.1L3 10.2 21 3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.1 13.9 15 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          {{ sending ? 'Sending…' : 'Send Message to Vignesh' }}
+        </button>
+        <p class="form-note">{{ contactApiNote }}</p>
+        @if (statusMessage) {
+          <p class="form-status" role="status" aria-live="polite">{{ statusMessage }}</p>
+        }
+      </form>
+    </div>
+
+    <div class="contact-links">
+      <a href="https://github.com/VigneshMC-creator" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/vignesh-madhav-kumar-edara-124a4320a/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+      <a href="mailto:Vigneshchowdary195@gmail.com">Vigneshchowdary195@gmail.com</a>
+    </div>
+
+    <p class="contact-foot">© {{ currentYear }} Vignesh Madhav Kumar Edara</p>
+  </div>
+</section>
