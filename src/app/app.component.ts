@@ -11,6 +11,7 @@ import { ThemeService } from './core/services/theme.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   readonly themeService = inject(ThemeService);
+  mobileMenuOpen = false;
   readonly currentYear = new Date().getFullYear();
 
   @ViewChild('devCursor', { static: true })
@@ -28,6 +29,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   toggleTheme(): void {
     this.themeService.toggle();
+  }
+
+  toggleNavigation(): void {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.mobileMenuOpen = false;
   }
 
   @HostListener('document:pointermove', ['$event'])
