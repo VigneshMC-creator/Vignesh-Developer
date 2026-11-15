@@ -1,34 +1,57 @@
 :root {
   color-scheme: light;
 
-  /* One shared cool-neutral and cyan/blue palette for every route. */
-  --bg: #f5f7fb;
+  /* White-first professional light theme with restrained cyan accents. */
+  --bg: #ffffff;
   --surface: #ffffff;
-  --ink: #172338;
-  --muted: #5e6d82;
-  --faint: #8492a6;
-  --soft: #edf2f8;
-  --line: #dce4ef;
-  --accent: #287fb8;
-  --accent-strong: #1e679f;
-  --accent-soft: #e4f1fa;
-  --header-bg: rgba(245, 247, 251, .94);
-  --shadow: 0 12px 36px rgba(25, 49, 80, .08);
-  --input: #fbfcfe;
+  --ink: #202b38;
+  --muted: #647182;
+  --faint: #8994a3;
+  --soft: #f6f8fa;
+  --line: #e5e9ee;
+  --accent: #117f9d;
+  --accent-strong: #086a84;
+  --accent-soft: #eaf6f9;
+  --header-bg: rgba(255, 255, 255, .96);
+  --shadow: 0 12px 36px rgba(25, 42, 64, .07);
+  --input: #fbfcfd;
+  --footer-bg: #ffffff;
+  --footer-ink: #718093;
+  --footer-nav: #68778a;
+  --footer-top-bg: #f7f9fb;
+  --footer-top-border: #e6ebf0;
 
-  /* Shared navy hero and code-panel tones. */
-  --hero-bg: #071326;
-  --hero-surface: #13233b;
-  --hero-ink: #f4f8ff;
-  --hero-muted: #aebed3;
-  --hero-faint: #8097b5;
-  --hero-copy: #c3d0e2;
-  --hero-accent: #20c5df;
-  --gradient-cyan: #08b7d2;
-  --gradient-blue: #3277e8;
-  --gradient-indigo: #718cf0;
+  /* Hero changes with the active theme, not a permanently dark panel. */
+  --hero-bg: #ffffff;
+  --hero-surface: #f4f7fa;
+  --hero-ink: #1d2938;
+  --hero-muted: #657386;
+  --hero-faint: #7f8da0;
+  --hero-copy: #526173;
+  --hero-accent: #087f9c;
+  --hero-glow: rgba(22, 151, 180, .09);
+  --hero-chip-bg: #f7f9fb;
+  --hero-chip-border: #e4e9ef;
+  --hero-chip-hover: #edf6f9;
+  --hero-button-bg: #f7f9fb;
+  --hero-button-border: #e2e8ee;
+  --hero-avatar-border: #e4e9ef;
 
-  /* Contact uses the same page and surface tokens as the rest of the site. */
+  --gradient-cyan: #087f9d;
+  --gradient-blue: #326eb2;
+  --gradient-indigo: #576ba8;
+
+  /* Code sample remains a subtle, neutral panel in both themes. */
+  --code-bg: #f5f7fa;
+  --code-border: #e2e8ef;
+  --code-text: #2f4054;
+  --code-muted: #78889b;
+  --code-keyword: #416ca5;
+  --code-type: #087f9d;
+  --code-heading: #64768d;
+  --code-status: #1685a2;
+
+  /* Contact uses the same surfaces and controls as the rest of the site. */
   --contact-page-bg: var(--bg);
   --contact-card: var(--surface);
   --contact-ink: var(--ink);
@@ -44,6 +67,7 @@
 
 :root[data-theme='dark'] {
   color-scheme: dark;
+
   --bg: #0c1525;
   --surface: #121f33;
   --ink: #edf4fd;
@@ -54,9 +78,14 @@
   --accent: #55b8dc;
   --accent-strong: #7acbe8;
   --accent-soft: #18364e;
-  --header-bg: rgba(12, 21, 37, .94);
+  --header-bg: rgba(12, 21, 37, .96);
   --shadow: 0 12px 38px rgba(0, 0, 0, .24);
   --input: #0c192c;
+  --footer-bg: #07101e;
+  --footer-ink: #8295af;
+  --footer-nav: #8799b3;
+  --footer-top-bg: #14243a;
+  --footer-top-border: #293c57;
 
   --hero-bg: #050e1d;
   --hero-surface: #12243d;
@@ -65,6 +94,35 @@
   --hero-faint: #8499b6;
   --hero-copy: #c4d1e2;
   --hero-accent: #28c8e2;
+  --hero-glow: rgba(36, 157, 213, .16);
+  --hero-chip-bg: rgba(17, 37, 67, .72);
+  --hero-chip-border: rgba(132, 169, 215, .2);
+  --hero-chip-hover: rgba(16, 61, 95, .66);
+  --hero-button-bg: rgba(14, 29, 51, .86);
+  --hero-button-border: rgba(132, 169, 215, .25);
+  --hero-avatar-border: rgba(132, 169, 215, .3);
+
+  --gradient-cyan: #08b7d2;
+  --gradient-blue: #3277e8;
+  --gradient-indigo: #718cf0;
+
+  --code-bg: #101a2d;
+  --code-border: #253650;
+  --code-text: #e4edfa;
+  --code-muted: #9bb2ce;
+  --code-keyword: #a8c3ef;
+  --code-type: #8ed6e9;
+  --code-heading: #9bb2ce;
+  --code-status: #56b8dc;
+
+  --contact-page-bg: var(--bg);
+  --contact-card: var(--surface);
+  --contact-ink: var(--ink);
+  --contact-muted: var(--muted);
+  --contact-faint: var(--faint);
+  --contact-line: var(--line);
+  --contact-input: var(--input);
+  --contact-accent: var(--accent);
 }
 
 * { box-sizing: border-box; }

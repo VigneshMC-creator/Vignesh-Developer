@@ -13,11 +13,9 @@
           <i class="hero-name-led" aria-hidden="true"></i>
         </h1>
 
-        <div class="hero-role">
+        <div class="hero-role" aria-label="Technical focus">
           <span class="role-prompt">&gt;</span>
-          <span>.NET Backend &amp; Full Stack Development</span>
-          <span class="role-separator">·</span>
-          <span>C# · ASP.NET Core · Angular</span>
+          <span class="role-title" [class.is-changing]="!roleVisible" aria-live="polite">{{ roleTitles[roleIndex] }}</span>
           <span class="role-caret" aria-hidden="true"></span>
         </div>
 
